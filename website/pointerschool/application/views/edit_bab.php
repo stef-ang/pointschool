@@ -43,7 +43,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user"></i>
-                        UDIIIIIN
+                        ADMIN
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -64,10 +64,10 @@
                      <li>
                         <a href="<?=base_url()?>index.php/kelas"><i class="fa fa-fw fa-university"></i> Kelas</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="<?=base_url()?>index.php/mapel"><i class="fa fa-fw fa-paper-plane"></i> Mata Pelajaran</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="<?=base_url()?>index.php/bab"><i class="fa fa-fw fa-codepen"></i> Bab</a>
                     </li>
                     <li>
@@ -75,9 +75,6 @@
                     </li>
                     <li>
                         <a href="<?=base_url()?>index.php/materi"><i class="fa fa-fw fa-book"></i> Materi</a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>index.php/kelsoal"><i class="fa fa-fw fa-trophy"></i>Soal</a>
                     </li>
                 </ul>
             </div>
@@ -92,17 +89,17 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Mata Pelajaran
+                            Bab Mata Pelajaran
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>index.php/Dashboard">Dashboard</a>
                             </li>
                             <li>
-                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/mapel">Mapel</a>
+                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/bab">Bab</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Edit Mapel
+                                <i class="fa fa-file"></i> Edit Bab
                             </li>
                         </ol>
                     </div>
@@ -118,13 +115,13 @@
                                         <i class="fa fa-plus-circle fa-4x"></i>
                                     </div>
                                     <div class="col-xs-10 text-right">
-                                        <div class="huge">Edit Mata Pelajaran</div>
+                                        <div class="huge">Edit Bab</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body">
                                 <?php
-                                    $text = "mapel/edit/".$data[0]->id_mapel;
+                                    $text = "bab/edit/".$data[0]->id_bab;
                                     echo form_open($text);
                                 ?>
                                 <?php
@@ -132,7 +129,7 @@
                                     {
                                         echo "<div class='alert alert-success alert-dismissable'  role='alert'>";
                                         echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                                        echo "Kelas berhasil diedit";
+                                        echo "Bab berhasil diedit";
                                         echo "</div>";
                                     }
                                     if(isset($_GET['status']) && $_GET['status'] == 1)
@@ -155,12 +152,66 @@
                                     }
                                 ?>
                                     <div class="form-group">
-                                        <label class="control-label">ID Mapel:</label>
-                                        <input class="form-control" name="id_mapel" type="text" value="<?php echo $data[0]->id_mapel?>" readonly></input>
+                                        <label class="control-label">ID Bab:</label>
+                                        <input class="form-control" name="id_bab" type="text" value="<?php echo $data[0]->id_bab?>" readonly></input>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label">Nama Mapel:</label>
-                                        <input class="form-control" name="nama_mapel" type="text" value="<?php echo $data[0]->nama_mapel?>"></input>
+                                        <label class="control-label">Nama Kelas:
+                                        </label>
+                                        <select class="form-control" name="id_kelas">
+                                            <?php
+                                                $i=1;
+                                                foreach ($kelas as $d){
+                                                    echo "<option value = ".$d->id_kelas;
+                                                    if ($d->id_kelas == $data[0]->id_kelas){
+                                                        echo " selected=selected";
+                                                    }
+                                                    echo ">".$d->nomor_kelas." - ".$d->nama_kelas."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Nama Mata Pelajaran:
+                                        </label>
+                                        <select class="form-control" name="id_mapel">
+                                            <?php
+                                                $i=1;
+                                                foreach ($mapel as $d){
+                                                    echo "<option value = ".$d->id_mapel;
+                                                    if ($d->id_mapel == $data[0]->id_mapel){
+                                                        echo " selected=selected";
+                                                    }
+                                                    echo ">".$d->nama_mapel."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <?php 
+                                        if (form_error('nomer_bab') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nomer_bab');
+                                            echo "</div>";    
+                                        }
+                                    ?>
+                                    <div class="form-group">
+                                        <label class="control-label">Nomer Bab:
+                                        </label>
+                                        <input class="form-control" name="nomer_bab" value="<?=$data[0]->nomor_bab?>" type="number"></input>
+                                    </div>
+                                    <?php 
+                                        if (form_error('nama_bab') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nama_bab');
+                                            echo "</div>";    
+                                        }
+                                    ?>
+                                    <div class="form-group">
+                                        <label class="control-label">Nama Bab:
+                                        </label>
+                                        <input class="form-control" name="nama_bab" value="<?=$data[0]->nama_bab?>" type="text"></input>
                                     </div>
                                     <div class="pull-right">
                                         <button class="btn btn-success" type="submit"><b>OK</b></button>

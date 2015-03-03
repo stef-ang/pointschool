@@ -20,11 +20,21 @@ class Subbab extends CI_Controller {
 		   	'nomor_subbab' => $nomor_subbab,
 		   	'nama_subbab' => $nama_subbab
 		);
-
-		$this->load->model('subbab_model');
-		$this->subbab_model->insert($data);
-		$text = "subbab/detailSubbab/".$id_bab."?status=0";
-		redirect($text, 'refresh');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('nomor_subbab', 'Nomor Sub-Bab', 'required');
+		$this->form_validation->set_rules('nama_subbab', 'Nama Sub-Bab', 'required');
+		$this->form_validation->set_message('required', 'Field %s harus diisi!');
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->detailSubbab($id_bab);
+		}
+		else
+		{
+			$this->load->model('subbab_model');
+			$this->subbab_model->insert($data);
+			$text = "subbab/detailSubbab/".$id_bab."?status=0";
+			redirect($text, 'refresh');
+		}
 	}
 
 	public function detailSubbab($id_bab){
@@ -56,11 +66,25 @@ class Subbab extends CI_Controller {
 		   	'nama_subbab' => $nama_subbab
 		);
 
-		$this->load->model('subbab_model');
-		$this->subbab_model->update($id_subbab, $data);
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('nomor_subbab', 'Nomor Sub-Bab', 'required');
+		$this->form_validation->set_rules('nama_subbab', 'Nama Sub-Bab', 'required');
+		$this->form_validation->set_message('required', 'Field %s harus diisi!');
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->editSubbab($id_subbab);
+		}
+		else
+		{
 
-		$text = "subbab/editSubbab/".$id_subbab."?status=0";
-		redirect($text, 'refresh');
+			$this->load->model('subbab_model');
+			$this->subbab_model->update($id_subbab, $data);
+
+			$text = "subbab/editSubbab/".$id_subbab."?status=0";
+			redirect($text, 'refresh');
+		}
+
+		
 	}
 	
 

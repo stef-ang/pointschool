@@ -43,7 +43,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user"></i>
-                        UDIIIIIN
+                        ADMIN
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -76,9 +76,6 @@
                     <li>
                         <a href="<?=base_url()?>index.php/materi"><i class="fa fa-fw fa-book"></i> Materi</a>
                     </li>
-                    <li>
-                        <a href="<?=base_url()?>index.php/kelsoal"><i class="fa fa-fw fa-trophy"></i>Soal</a>
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -99,10 +96,10 @@
                                 <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>index.php/Dashboard">Dashboard</a>
                             </li>
                             <li>
-                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/subbab>">Sub-Bab</a>
+                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/subbab">Sub-Bab</a>
                             </li>
                             <li>
-                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/subbab/detailSubbab/<?=$data[0]->id_bab?>>">Detail Sub-Bab</a>
+                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/subbab/detailSubbab/<?=$data[0]->id_bab?>">Detail Sub-Bab</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-file"></i> Edit Sub-Bab
@@ -165,11 +162,27 @@
                                         <label class="control-label">ID Bab:</label>
                                         <input class="form-control" name="id_bab" type="text" value="<?php echo $data[0]->id_bab?>" readonly></input>
                                     </div>
+                                    <?php 
+                                        if (form_error('nomor_subbab') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nomor_subbab');
+                                            echo "</div>";    
+                                        }
+                                    ?>
                                     <div class="form-group">
                                         <label class="control-label">Nomer Sub-Bab:
                                         </label>
                                         <input class="form-control" name="nomor_subbab" value="<?=$data[0]->nomor_subbab?>" type="number"></input>
                                     </div>
+                                    <?php 
+                                        if (form_error('nama_subbab') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nama_subbab');
+                                            echo "</div>";    
+                                        }
+                                    ?>
                                     <div class="form-group">
                                         <label class="control-label">Nama Sub-Bab:
                                         </label>

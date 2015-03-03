@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kelola Sub-Bab Mata Pelajaran</title>
+    <title>Kelola Materi Pelajaran</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user"></i>
-                        UDIIIIIN
+                        ADMIN
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -59,25 +59,22 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="<?=base_url()?>index.php/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                      <li>
-                        <a href="kelas"><i class="fa fa-fw fa-university"></i> Kelas</a>
+                        <a href="<?=base_url()?>index.php/kelas"><i class="fa fa-fw fa-university"></i> Kelas</a>
                     </li>
                     <li>
-                        <a href="mapel"><i class="fa fa-fw fa-paper-plane"></i> Mata Pelajaran</a>
+                        <a href="<?=base_url()?>index.php/mapel"><i class="fa fa-fw fa-paper-plane"></i> Mata Pelajaran</a>
                     </li>
                     <li>
-                        <a href="bab"><i class="fa fa-fw fa-codepen"></i> Bab</a>
+                        <a href="<?=base_url()?>index.php/bab"><i class="fa fa-fw fa-codepen"></i> Bab</a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>index.php/subbab"><i class="fa fa-fw fa-bars"></i> Sub Bab</a>
                     </li>
                     <li class="active">
-                        <a href="subbab"><i class="fa fa-fw fa-bars"></i> Sub Bab</a>
-                    </li>
-                    <li>
-                        <a href="materi"><i class="fa fa-fw fa-book"></i> Materi</a>
-                    </li>
-                    <li>
-                        <a href="kelsoal"><i class="fa fa-fw fa-trophy"></i>Soal</a>
+                        <a href="<?=base_url()?>index.php/materi"><i class="fa fa-fw fa-book"></i> Materi</a>
                     </li>
                 </ul>
             </div>
@@ -92,14 +89,17 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                           Sub-Bab Mata Pelajaran
+                           Materi Pelajaran
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="dashboard.php">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>index.php/dashboard">Dashboard</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/materi">Materi</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Sub-Bab
+                                <i class="fa fa-file"></i> Detail
                             </li>
                         </ol>
                     </div>
@@ -115,20 +115,33 @@
                                         <i class="fa fa-university fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">Daftar Sub Bab Mata Pelajaran</div>
+                                        <div class="huge">Daftar Materi Pelajaran</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body"></div>
+                            <table class="table">
+                                <tr>    
+                                    <th width=150px>Kelas</th> <td width=10px>:</td> <td><?=$bab[0]->nomor_kelas." - ".$bab[0]->nama_kelas?></td>
+                                </tr>
+                                <tr>
+                                    <th>Mata Pelajaran</th> <td>:</td> <td><?=$bab[0]->nama_mapel?></td>
+                                </tr>
+                                <tr>
+                                    <th>Bab</th> <td>:</td> <td><?=$bab[0]->nomor_bab?></td>
+                                </tr>
+                                <tr>
+                                    <th>Nama Bab</th> <td>:</td> <td><?=$bab[0]->nama_bab?></td>
+                                </tr>
+                            </table>
+                            <br>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th ><center>No</center></th>
-                                        <th><center>Nama Kelas</center></th>
-                                        <th><center>Nama Mapel</center></th>
-                                        <th><center>Bab</center></th>
-                                        <th><center>Nama Bab</center></th>
-                                        <th><center>Lihat Detail Sub-Bab</center></th>
+                                        <th><center>No</center></th>
+                                        <th><center>Nomer Sub-Bab</center></th>
+                                        <th><center>Nama Sub-Bab</center></th>
+                                        <th><center>Detail</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,16 +150,15 @@
                                     foreach ($data as $d){ // perulangan untuk menampilkan semua post
                                         echo "<tr>";
                                         echo "<td align=center>".$i."</td>";
-                                        echo "<td>".$d->nomor_kelas." - ".$d->nama_kelas."</td>";
-                                        echo "<td>".$d->nama_mapel."</td>";
-                                        echo "<td align=center width='10%''>".$d->nomor_bab."</td>";
-                                        echo "<td>".$d->nama_bab."</td>";
+                                        echo "<td align=center>".$d->nomor_subbab."</td>";
+                                        echo "<td>".$d->nama_subbab."</td>";
                                         echo "<td align = center>";
-                                            $text = "subbab/detailSubbab/".$d->id_bab;
+                                            $text = "materi/detailMateri/".$d->id_subbab;
                                             echo form_open($text);
-                                            echo "<input type=submit value=Detail>";
+                                            echo "<input type=submit value=detail>";
                                             echo form_close();
                                         echo "</td>";
+                                        echo "</tr>";
                                         echo "</tr>";
                                         $i++;
                                     }
@@ -170,7 +182,17 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-
+    <script>
+        function myFunction(p1) {
+            if (confirm("Apakah anda yakin untuk menghapus Sub-bab ini ?") == true) {
+                var text = "../hapusSubbab/"+p1;
+                window.location.replace(text);
+            } else {
+                
+            }
+            
+        }
+    </script>
     <script>
     $('#popUpEdit').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal

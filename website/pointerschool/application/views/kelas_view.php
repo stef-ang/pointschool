@@ -14,7 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom css -->
+    <!-- Custom CSS -->
     <link href="<?=base_url()?>assets/css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -43,7 +43,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user"></i>
-                        UDIIIIIN
+                        ADMIN
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -59,25 +59,22 @@
              <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="<?=base_url()?>index.php/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                     <li>
-                        <a href="<?=base_url()?>index.php/kelas"><i class="fa fa-fw fa-university"></i> Kelas</a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>index.php/mapel"><i class="fa fa-fw fa-paper-plane"></i> Mata Pelajaran</a>
-                    </li>
-                    <li class="active">
-                        <a href="<?=base_url()?>index.php/bab"><i class="fa fa-fw fa-codepen"></i> Bab</a>
+                     <li class="active">
+                        <a href="kelas"><i class="fa fa-fw fa-university"></i> Kelas</a>
                     </li>
                     <li>
-                        <a href="<?=base_url()?>index.php/subbab"><i class="fa fa-fw fa-bars"></i> Sub Bab</a>
+                        <a href="mapel"><i class="fa fa-fw fa-paper-plane"></i> Mata Pelajaran</a>
                     </li>
                     <li>
-                        <a href="<?=base_url()?>index.php/materi"><i class="fa fa-fw fa-book"></i> Materi</a>
+                        <a href="bab"><i class="fa fa-fw fa-codepen"></i> Bab</a>
                     </li>
                     <li>
-                        <a href="<?=base_url()?>index.php/kelsoal"><i class="fa fa-fw fa-trophy"></i>Soal</a>
+                        <a href="subbab"><i class="fa fa-fw fa-bars"></i> Sub Bab</a>
+                    </li>
+                    <li>
+                        <a href="materi"><i class="fa fa-fw fa-book"></i> Materi</a>
                     </li>
                 </ul>
             </div>
@@ -92,17 +89,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Bab Mata Pelajaran
+                            Tingkatan Kelas
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>index.php/Dashboard">Dashboard</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/bab">Bab</a>
+                                <i class="fa fa-dashboard"></i>  <a href="dashboard">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Edit Bab
+                                <i class="fa fa-file"></i> Kelas
                             </li>
                         </ol>
                     </div>
@@ -110,6 +104,54 @@
                 <!-- /.row -->
 
                 <div class="row">
+                    <div class="col-lg-8">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-university fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">Daftar Kelas</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body"></div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th ><center>No</center></th>
+                                        <th><center>ID Kelas</center></th>
+                                        <th><center>Nama Kelas</center></th>
+                                        <th><center>Edit</center></th>
+                                        <th><center>Hapus</center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   <?php
+                                    $i=1;
+                                    foreach ($data as $d){ // perulangan untuk menampilkan semua post
+                                        echo "<tr>";
+                                        echo "<td align=center>".$i."</td>";
+                                        echo "<td align=center>".$d->nomor_kelas."</td>";
+                                        echo "<td>".$d->nama_kelas."</td>";
+                                        echo "<td align = center>";
+                                            $text = "kelas/editKelas/".$d->id_kelas;
+                                            echo form_open($text);
+                                            echo "<input type=submit value=edit>";
+                                            echo form_close();
+                                        echo "</td>";
+                                        echo "<td align = center>";
+                                            echo "<input type=submit value=delete onclick=myFunction(".$d->id_kelas.")>";
+                                        echo "</td>";
+                                        echo "</tr>";
+                                        $i++;
+                                    }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <div class="col-lg-4">
                         <div class="panel panel-green">
                             <div class="panel-heading">
@@ -118,21 +160,17 @@
                                         <i class="fa fa-plus-circle fa-4x"></i>
                                     </div>
                                     <div class="col-xs-10 text-right">
-                                        <div class="huge">Edit Bab</div>
+                                        <div class="huge">Tambah Kelas</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body">
                                 <?php
-                                    $text = "bab/edit/".$data[0]->id_bab;
-                                    echo form_open($text);
-                                ?>
-                                <?php
                                     if(isset($_GET['status']) && $_GET['status'] == 0)
                                     {
                                         echo "<div class='alert alert-success alert-dismissable'  role='alert'>";
                                         echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                                        echo "Bab berhasil diedit";
+                                        echo "Kelas berhasil ditambahkan";
                                         echo "</div>";
                                     }
                                     if(isset($_GET['status']) && $_GET['status'] == 1)
@@ -154,74 +192,39 @@
                                         echo "</div>";
                                     }
                                 ?>
+                                <?php
+                                    $text = "kelas/insert";
+                                    echo form_open($text);
+                                ?>
+                                    <?php 
+                                        if (form_error('nomer_kelas') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nomer_kelas');
+                                            echo "</div>";    
+                                        }
+                                    ?>
                                     <div class="form-group">
-                                        <label class="control-label">ID Bab:</label>
-                                        <input class="form-control" name="id_bab" type="text" value="<?php echo $data[0]->id_bab?>" readonly></input>
+                                        <label class="control-label">Nomor Kelas:</label>
+                                        <input class="form-control" name="nomer_kelas" value="<?php echo set_value('nomer_kelas');?>" type="text"></input>
                                     </div>
+                                    <?php 
+                                        if (form_error('nama_kelas') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nama_kelas');
+                                            echo "</div>";    
+                                        }
+                                    ?>
                                     <div class="form-group">
                                         <label class="control-label">Nama Kelas:
                                         </label>
-                                        <select class="form-control" name="id_kelas">
-                                            <?php
-                                                $i=1;
-                                                foreach ($kelas as $d){
-                                                    echo "<option value = ".$d->id_kelas;
-                                                    if ($d->id_kelas == $data[0]->id_kelas){
-                                                        echo " selected=selected";
-                                                    }
-                                                    echo ">".$d->nomor_kelas." - ".$d->nama_kelas."</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Nama Mata Pelajaran:
-                                        </label>
-                                        <select class="form-control" name="id_mapel">
-                                            <?php
-                                                $i=1;
-                                                foreach ($mapel as $d){
-                                                    echo "<option value = ".$d->id_mapel;
-                                                    if ($d->id_mapel == $data[0]->id_mapel){
-                                                        echo " selected=selected";
-                                                    }
-                                                    echo ">".$d->nama_mapel."</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <?php 
-                                        if (form_error('nomer_bab') != NULL){
-                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
-                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                                            echo form_error('nomer_bab');
-                                            echo "</div>";    
-                                        }
-                                    ?>
-                                    <div class="form-group">
-                                        <label class="control-label">Nomer Bab:
-                                        </label>
-                                        <input class="form-control" name="nomer_bab" value="<?=$data[0]->nomor_bab?>" type="number"></input>
-                                    </div>
-                                    <?php 
-                                        if (form_error('nama_bab') != NULL){
-                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
-                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                                            echo form_error('nama_bab');
-                                            echo "</div>";    
-                                        }
-                                    ?>
-                                    <div class="form-group">
-                                        <label class="control-label">Nama Bab:
-                                        </label>
-                                        <input class="form-control" name="nama_bab" value="<?=$data[0]->nama_bab?>" type="text"></input>
+                                        <input class="form-control" name="nama_kelas" value="<?php echo set_value('nama_kelas');?>" type="text"></input>
                                     </div>
                                     <div class="pull-right">
                                         <button class="btn btn-success" type="submit"><b>OK</b></button>
                                     </div>
-                                <?php
-                                    echo form_close();
-                                ?>
+                                <?php echo form_close()?>
                             </div>
                         </div>
                     </div>
@@ -241,6 +244,17 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 
+    <script>
+        function myFunction(p1) {
+            if (confirm("Apakah anda yakin untuk menghapus kelas ini ?") == true) {
+                var text = "kelas/hapusKelas/"+p1;
+                window.location.replace(text);
+            } else {
+                
+            }
+            
+        }
+    </script>
     <script>
     $('#popUpEdit').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kelola Mapel</title>
+    <title>Kelola Bab Mata Pelajaran</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user"></i>
-                        UDIIIIIN
+                        ADMIN
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -64,10 +64,10 @@
                      <li>
                         <a href="kelas"><i class="fa fa-fw fa-university"></i> Kelas</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="mapel"><i class="fa fa-fw fa-paper-plane"></i> Mata Pelajaran</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="bab"><i class="fa fa-fw fa-codepen"></i> Bab</a>
                     </li>
                     <li>
@@ -75,9 +75,6 @@
                     </li>
                     <li>
                         <a href="materi"><i class="fa fa-fw fa-book"></i> Materi</a>
-                    </li>
-                    <li>
-                        <a href="kelsoal"><i class="fa fa-fw fa-trophy"></i>Soal</a>
                     </li>
                 </ul>
             </div>
@@ -92,14 +89,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Mata Pelajaran
+                           Bab Mata Pelajaran
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="dashboard.php">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="dashboard">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Mata Pelajaran
+                                <i class="fa fa-file"></i> Bab
                             </li>
                         </ol>
                     </div>
@@ -115,7 +112,7 @@
                                         <i class="fa fa-university fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">Daftar Mata Pelajaran</div>
+                                        <div class="huge">Daftar Bab Mata Pelajaran</div>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +121,10 @@
                                 <thead>
                                     <tr>
                                         <th ><center>No</center></th>
-                                        <th><center>Nama Mata Pelajaran</center></th>
+                                        <th><center>Nama Kelas</center></th>
+                                        <th><center>Nama Mapel</center></th>
+                                        <th><center>Bab</center></th>
+                                        <th><center>Nama Bab</center></th>
                                         <th><center>Edit</center></th>
                                         <th><center>Hapus</center></th>
                                     </tr>
@@ -135,15 +135,18 @@
                                     foreach ($data as $d){ // perulangan untuk menampilkan semua post
                                         echo "<tr>";
                                         echo "<td align=center>".$i."</td>";
+                                        echo "<td>".$d->nomor_kelas." - ".$d->nama_kelas."</td>";
                                         echo "<td>".$d->nama_mapel."</td>";
+                                        echo "<td align=center width='10%''>".$d->nomor_bab."</td>";
+                                        echo "<td>".$d->nama_bab."</td>";
                                         echo "<td align = center>";
-                                            $text = "mapel/editMapel/".$d->id_mapel;
+                                            $text = "bab/editBab/".$d->id_bab;
                                             echo form_open($text);
                                             echo "<input type=submit value=edit>";
                                             echo form_close();
                                         echo "</td>";
                                         echo "<td align = center>";
-                                            echo "<input type=submit value=delete onclick=myFunction(".$d->id_mapel.")>";
+                                            echo "<input type=submit value=delete onclick=myFunction(".$d->id_bab.")>";
                                         echo "</td>";
                                         echo "</tr>";
                                         $i++;
@@ -161,7 +164,7 @@
                                         <i class="fa fa-plus-circle fa-4x"></i>
                                     </div>
                                     <div class="col-xs-10 text-right">
-                                        <div class="huge">Tambah Mata Pelajaran</div>
+                                        <div class="huge">Tambah Bab</div>
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +174,7 @@
                                     {
                                         echo "<div class='alert alert-success alert-dismissable'  role='alert'>";
                                         echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                                        echo "Mata pelajaran berhasil ditambahkan";
+                                        echo "Bab berhasil ditambahkan";
                                         echo "</div>";
                                     }
                                     if(isset($_GET['status']) && $_GET['status'] == 1)
@@ -194,13 +197,58 @@
                                     }
                                 ?>
                                 <?php
-                                    $text = "mapel/insert";
+                                    $text = "bab/insert";
                                     echo form_open($text);
                                 ?>
                                     <div class="form-group">
+                                        <label class="control-label">Nama Kelas:
+                                        </label>
+                                        <select class="form-control" name="id_kelas">
+                                            <?php
+                                                $i=1;
+                                                foreach ($kelas as $d){
+                                                    echo "<option value = ".$d->id_kelas.">".$d->nomor_kelas." - ".$d->nama_kelas."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="control-label">Nama Mata Pelajaran:
                                         </label>
-                                        <input class="form-control" name="nama_mapel" type="text"></input>
+                                        <select class="form-control" name="id_mapel">
+                                            <?php
+                                                $i=1;
+                                                foreach ($mapel as $d){
+                                                    echo "<option value = ".$d->id_mapel.">".$d->nama_mapel."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <?php 
+                                        if (form_error('nomer_bab') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nomer_bab');
+                                            echo "</div>";    
+                                        }
+                                    ?>
+                                    <div class="form-group">
+                                        <label class="control-label">Nomer Bab:
+                                        </label>
+                                        <input class="form-control" name="nomer_bab" value="<?php echo set_value('nomer_bab');?>" type="number"></input>
+                                    </div>
+                                   <?php 
+                                        if (form_error('nama_bab') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nama_bab');
+                                            echo "</div>";    
+                                        }
+                                    ?>
+                                    <div class="form-group">
+                                        <label class="control-label">Nama Bab:
+                                        </label>
+                                        <input class="form-control" name="nama_bab" value="<?php echo set_value('nama_bab');?>" type="text"></input>
                                     </div>
                                     <div class="pull-right">
                                         <button class="btn btn-success" type="submit"><b>OK</b></button>
@@ -224,10 +272,11 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-    <script>
+
+     <script>
         function myFunction(p1) {
-            if (confirm("Apakah anda yakin untuk menghapus mapel ini ?") == true) {
-                var text = "mapel/hapusMapel/"+p1;
+            if (confirm("Apakah anda yakin untuk menghapus bab ini ?") == true) {
+                var text = "bab/hapusBab/"+p1;
                 window.location.replace(text);
             } else {
                 
@@ -235,6 +284,7 @@
             
         }
     </script>
+
     <script>
     $('#popUpEdit').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal

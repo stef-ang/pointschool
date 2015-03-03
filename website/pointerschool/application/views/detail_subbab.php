@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kelola Kelas</title>
+    <title>Kelola Sub-Bab Mata Pelajaran</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user"></i>
-                        UDIIIIIN
+                        ADMIN
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -56,28 +56,25 @@
             </ul>
             <!-- Brand and toggle get grouped for better mobile display -->
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-             <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="<?=base_url()?>index.php/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                     <li class="active">
-                        <a href="kelas"><i class="fa fa-fw fa-university"></i> Kelas</a>
-                    </li>
-                    <li>
-                        <a href="mapel"><i class="fa fa-fw fa-paper-plane"></i> Mata Pelajaran</a>
+                     <li>
+                        <a href="<?=base_url()?>index.php/kelas"><i class="fa fa-fw fa-university"></i> Kelas</a>
                     </li>
                     <li>
-                        <a href="bab"><i class="fa fa-fw fa-codepen"></i> Bab</a>
+                        <a href="<?=base_url()?>index.php/mapel"><i class="fa fa-fw fa-paper-plane"></i> Mata Pelajaran</a>
                     </li>
                     <li>
-                        <a href="subbab"><i class="fa fa-fw fa-bars"></i> Sub Bab</a>
+                        <a href="<?=base_url()?>index.php/bab"><i class="fa fa-fw fa-codepen"></i> Bab</a>
+                    </li>
+                    <li class="active">
+                        <a href="<?=base_url()?>index.php/subbab"><i class="fa fa-fw fa-bars"></i> Sub Bab</a>
                     </li>
                     <li>
-                        <a href="materi"><i class="fa fa-fw fa-book"></i> Materi</a>
-                    </li>
-                    <li>
-                        <a href="kelsoal"><i class="fa fa-fw fa-trophy"></i>Soal</a>
+                        <a href="<?=base_url()?>index.php/materi"><i class="fa fa-fw fa-book"></i> Materi</a>
                     </li>
                 </ul>
             </div>
@@ -92,14 +89,17 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Tingkatan Kelas
+                           Sub-Bab Mata Pelajaran
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="dashboard.php">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>index.php/dashboard">Dashboard</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-file"></i> <a href="<?=base_url()?>index.php/subbab">Sub-Bab</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Kelas
+                                <i class="fa fa-file"></i> Detail Sub-Bab
                             </li>
                         </ol>
                     </div>
@@ -115,19 +115,34 @@
                                         <i class="fa fa-university fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">Daftar Kelas</div>
+                                        <div class="huge">Daftar Sub Bab Mata Pelajaran</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body"></div>
+                            <table class="table">
+                                <tr>    
+                                    <th width=150px>Kelas</th> <td width=10px>:</td> <td><?=$bab[0]->nomor_kelas." - ".$bab[0]->nama_kelas?></td>
+                                </tr>
+                                <tr>
+                                    <th>Mata Pelajaran</th> <td>:</td> <td><?=$bab[0]->nama_mapel?></td>
+                                </tr>
+                                <tr>
+                                    <th>Bab</th> <td>:</td> <td><?=$bab[0]->nomor_bab?></td>
+                                </tr>
+                                <tr>
+                                    <th>Nama Bab</th> <td>:</td> <td><?=$bab[0]->nama_bab?></td>
+                                </tr>
+                            </table>
+                            <br>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th ><center>No</center></th>
-                                        <th><center>ID Kelas</center></th>
-                                        <th><center>Nama Kelas</center></th>
+                                        <th><center>No</center></th>
+                                        <th><center>Nomer Sub-Bab</center></th>
+                                        <th><center>Nama Sub-Bab</center></th>
                                         <th><center>Edit</center></th>
-                                        <th><center>Hapus</center></th>
+                                        <th><center>Delete</center></th> 
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -136,17 +151,18 @@
                                     foreach ($data as $d){ // perulangan untuk menampilkan semua post
                                         echo "<tr>";
                                         echo "<td align=center>".$i."</td>";
-                                        echo "<td align=center>".$d->nomor_kelas."</td>";
-                                        echo "<td>".$d->nama_kelas."</td>";
+                                        echo "<td align=center>".$d->nomor_subbab."</td>";
+                                        echo "<td>".$d->nama_subbab."</td>";
                                         echo "<td align = center>";
-                                            $text = "kelas/editKelas/".$d->id_kelas;
+                                            $text = "subbab/editSubbab/".$d->id_subbab;
                                             echo form_open($text);
                                             echo "<input type=submit value=edit>";
                                             echo form_close();
                                         echo "</td>";
                                         echo "<td align = center>";
-                                            echo "<input type=submit value=delete onclick=myFunction(".$d->id_kelas.")>";
+                                            echo "<input type=submit value=delete onclick=myFunction(".$d->id_subbab.")>";
                                         echo "</td>";
+                                        echo "</tr>";
                                         echo "</tr>";
                                         $i++;
                                     }
@@ -163,7 +179,7 @@
                                         <i class="fa fa-plus-circle fa-4x"></i>
                                     </div>
                                     <div class="col-xs-10 text-right">
-                                        <div class="huge">Tambah Kelas</div>
+                                        <div class="huge">Tambah Sub-Bab</div>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +189,7 @@
                                     {
                                         echo "<div class='alert alert-success alert-dismissable'  role='alert'>";
                                         echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                                        echo "Kelas berhasil ditambahkan";
+                                        echo "Sub-bab berhasil ditambahkan";
                                         echo "</div>";
                                     }
                                     if(isset($_GET['status']) && $_GET['status'] == 1)
@@ -196,33 +212,36 @@
                                     }
                                 ?>
                                 <?php
-                                    $text = "kelas/insert";
+                                    $text = "subbab/insert";
                                     echo form_open($text);
                                 ?>
-                                    <?php 
-                                        if (form_error('nomer_kelas') != NULL){
-                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
-                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                                            echo form_error('nomer_kelas');
-                                            echo "</div>";    
-                                        }
-                                    ?>
                                     <div class="form-group">
-                                        <label class="control-label">Nomor Kelas:</label>
-                                        <input class="form-control" name="nomer_kelas" value="<?php echo set_value('nomer_kelas');?>" type="text"></input>
+                                        <input class="form-control" name="id_bab" type="hidden" value="<?=$bab[0]->id_bab?>"></input>
                                     </div>
                                     <?php 
-                                        if (form_error('nama_kelas') != NULL){
+                                        if (form_error('nomor_subbab') != NULL){
                                             echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
                                             echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-                                            echo form_error('nama_kelas');
+                                            echo form_error('nomor_subbab');
                                             echo "</div>";    
                                         }
                                     ?>
                                     <div class="form-group">
-                                        <label class="control-label">Nama Kelas:
+                                        <label class="control-label">Nomer Sub-Bab:</label>
+                                        <input class="form-control" name="nomor_subbab" value="<?php echo set_value('nomor_subbab');?>" type="text"></input>
+                                    </div>
+                                    <?php 
+                                        if (form_error('nama_subbab') != NULL){
+                                            echo "<div class='alert alert-danger alert-dismissable' role='alert'>";
+                                            echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                                            echo form_error('nama_subbab');
+                                            echo "</div>";    
+                                        }
+                                    ?>
+                                    <div class="form-group">
+                                        <label class="control-label">Nama Sub-Bab:
                                         </label>
-                                        <input class="form-control" name="nama_kelas" value="<?php echo set_value('nama_kelas');?>" type="text"></input>
+                                        <input class="form-control" name="nama_subbab" value="<?php echo set_value('nama_subbab');?>" type="text"></input>
                                     </div>
                                     <div class="pull-right">
                                         <button class="btn btn-success" type="submit"><b>OK</b></button>
@@ -246,11 +265,10 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-
     <script>
         function myFunction(p1) {
-            if (confirm("Apakah anda yakin untuk menghapus kelas ini ?") == true) {
-                var text = "kelas/hapusKelas/"+p1;
+            if (confirm("Apakah anda yakin untuk menghapus Sub-bab ini ?") == true) {
+                var text = "../hapusSubbab/"+p1;
                 window.location.replace(text);
             } else {
                 
