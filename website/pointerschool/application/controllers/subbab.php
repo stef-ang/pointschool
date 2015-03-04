@@ -5,8 +5,11 @@ class Subbab extends CI_Controller {
 	{
 		$this->load->model('bab_model');
 		$data['data'] = $this->bab_model->getData();
-
+		
+		$header['title']="Kelola Sub-Bab Mata Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('subbab_view',$data);
+		$this->load->view('footer');
 	}
 
 	public function insert()
@@ -43,15 +46,21 @@ class Subbab extends CI_Controller {
 
 		$this->load->model('bab_model');
 		$data['bab'] = $this->bab_model->getBab($id_bab);		
-
+		
+		$header['title']="Kelola Sub-Bab Mata Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('detail_subbab',$data);
+		$this->load->view('footer');
 	}
 
 	public function editSubbab($id_subbab){
 
 		$this->load->model('subbab_model');
 		$data['data'] = $this->subbab_model->getSubbab($id_subbab);
+		$header['title']="Kelola Sub-Bab Mata Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('edit_subbab',$data);
+		$this->load->view('footer');
 	}
 
 	public function edit($id_subbab)

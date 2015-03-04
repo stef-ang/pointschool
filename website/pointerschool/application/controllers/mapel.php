@@ -5,7 +5,10 @@ class Mapel extends CI_Controller {
 	{
 		$this->load->model('mapel_model');
 		$data['data'] = $this->mapel_model->getData();
+		$header['title']= "Kelola Mapel";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('mapel_view',$data);
+		$this->load->view('footer');
 	}
 
 	public function insert()
@@ -38,7 +41,10 @@ class Mapel extends CI_Controller {
 		$this->load->model('mapel_model');
 		$data['data'] = $this->mapel_model->getMapel($id_mapel);
 		//print_r($data['data']);
+		$header['title']= "Kelola Mapel";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('edit_mapel',$data);
+		$this->load->view('footer');
 	}
 
 	public function edit($id_mapel)

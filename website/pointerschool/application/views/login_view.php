@@ -10,7 +10,7 @@
 </head>
 <body>
     <?php
-        $text = "login/do_login";
+        $text = site_url("login/do_login") ;
         echo form_open_multipart($text);
     ?>
     <div style="padding:20px">
@@ -27,7 +27,7 @@
     <p class="p-container">
         <input class="login" type="submit" name="go" id="go" value="Log in">
 
-        <a href="register.php">
+        <a href="<?=site_url("register.php")?>">
             <input class="register" type="button" value="Register">
         </a>
     </p>

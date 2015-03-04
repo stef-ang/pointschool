@@ -5,7 +5,10 @@ class Kelas extends CI_Controller {
 	{
 		$this->load->model('kelas_model');
 		$data['data'] = $this->kelas_model->getData();
+		$header['title']= "Kelola Kelas";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('kelas_view',$data);
+		$this->load->view('footer');
 	}
 
 	public function insert()
@@ -39,7 +42,11 @@ class Kelas extends CI_Controller {
 	{
 		$this->load->model('kelas_model');
 		$data['data'] = $this->kelas_model->getKelas($id_kelas);
+		
+		$header['title']= "Kelola Kelas";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('edit_kelas',$data);
+		$this->load->view('footer');
 	}
 
 	public function edit($id_kelas)

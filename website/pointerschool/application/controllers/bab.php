@@ -11,8 +11,10 @@ class Bab extends CI_Controller {
 
 		$this->load->model('mapel_model');
 		$data['mapel'] = $this->mapel_model->getData();
-
+		$header['title'] = "Kelola Bab Mata Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('bab_view',$data);
+		$this->load->view('footer');
 	}
 
 	public function insert()
@@ -58,7 +60,11 @@ class Bab extends CI_Controller {
 		$this->load->model('bab_model');
 		$data['data'] = $this->bab_model->getBab($id_bab);
 		//print_r($data['mapel']);
+		$header['title'] = "Kelola Bab Mata Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('edit_bab',$data);
+		$this->load->view('footer');
+		
 	}
 
 	public function edit($id_bab)

@@ -5,8 +5,10 @@ class Materi extends CI_Controller {
 	{
 		$this->load->model('bab_model');
 		$data['data'] = $this->bab_model->getData();
-
+		$header['title']="Kelola Materi Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('materi_view',$data);
+		$this->load->view('footer');
 	}
 
 	public function insert()
@@ -62,7 +64,10 @@ class Materi extends CI_Controller {
 		$this->load->model('bab_model');
 		$data['bab'] = $this->bab_model->getBab($id_bab);		
 
+		$header['title']="Kelola Materi Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('detail_materi1',$data);
+		$this->load->view('footer');
 	}
 
 	public function detailMateri($id_subbab){
@@ -75,7 +80,10 @@ class Materi extends CI_Controller {
 		$this->load->model('bab_model');
 		$data['bab'] = $this->bab_model->getBab($data['subbab'][0]->id_bab);		
 
+		$header['title']="Kelola Sub-Bab Mata Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('detail_materi2',$data);
+		$this->load->view('footer');
 	}
 
 	public function editMateri($id_materi){
@@ -86,7 +94,10 @@ class Materi extends CI_Controller {
 		$this->load->model('subbab_model');
 		//$data['subbab'] = $this->subbab_model->getSubbab($data['data'][0]->id_bab);
 
+		$header['title']="Kelola Materi Pelajaran";
+		$this->load->view('header_sidebar',$header);
 		$this->load->view('edit_materi',$data);
+		$this->load->view('footer');
 	}
 
 	public function edit($id_subbab)
