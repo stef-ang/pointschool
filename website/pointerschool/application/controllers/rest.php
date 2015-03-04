@@ -4,12 +4,21 @@ class Rest extends CI_Controller {
 	public function index()
 	{
 		$table = $this->input->post("table");
-		if($table){
-			$this->load->model('rest_model');
-			$result = $this->rest_model->getTable($table);
-			echo json_encode($result);
+		$this->load->model('rest_model');
+		$tables = $this->rest_model->getAllTable();
+		if($table=="show"){
+			$result = $tables;
 		}
-		else echo "ERROR ";
+		else if(in_array($table,$tables)){
+			
+			$result = $this->rest_model->getTable($table);
+			
+		}
+		else{
+			echo "ERROR TABLE NOT FOUND";
+			return;
+		}
+		echo json_encode($result);
 	}
 
 	
