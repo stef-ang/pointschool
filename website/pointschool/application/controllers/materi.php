@@ -15,7 +15,7 @@ class Materi extends CI_Controller {
 	{
 		$id_subbab = $_POST['id_subbab'];
 		$nomor_materi = $_POST['nomor_materi'];
-		$catatan_marei = $_POST['catatan_marei'];
+		$catatan_materi = $_POST['catatan_materi'];
 		$this->load->model('materi_model');
 		$idx['data'] = $this->materi_model->getMax();
 		$nomer = $idx['data']['0']->id_materi + 1;
@@ -49,7 +49,7 @@ class Materi extends CI_Controller {
 				'id_subbab' => $id_subbab,
 			   	'nomor_materi' => $nomor_materi,
 			   	'id_file_materi' => $file_path,
-			   	'catatan_marei' => $catatan_marei
+			   	'catatan_materi' => $catatan_materi
 			);
 			$this->materi_model->insert($data);
 			$text = "materi/detailMateri/".$id_subbab."?status=0";

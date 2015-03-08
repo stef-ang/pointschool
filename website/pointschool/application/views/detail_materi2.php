@@ -80,7 +80,7 @@
                                         echo "<td align=center>".$d->nomor_materi."</td>";
                                         $txt = base_url().$d->id_file_materi;
                                         echo "<td><img src=".$txt." width = 300px></td>";
-                                        echo "<td>".$d->catatan_marei."</td>"; 
+                                        echo "<td>".$d->catatan_materi."</td>"; 
                                         echo "<td align = center>";
                                             $text = "materi/editMateri/".$d->id_materi;
                                             echo form_open($text);
@@ -165,7 +165,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Catatan :</label>
-                                        <input class="form-control" name="catatan_marei" value="<?php echo set_value('catatan_marei');?>" type="textarea"></input>
+                                        <input class="form-control" name="catatan_materi" value="<?php echo set_value('catatan_materi');?>" type="textarea"></input>
                                     </div>
                                     <div class="pull-right">
                                         <button class="btn btn-success" type="submit"><b>OK</b></button>
