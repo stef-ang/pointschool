@@ -7,6 +7,6 @@ class Login extends CI_Controller {
 	}
 	public function do_login()
 	{
-		$this->load->view('dashboard_view');
+		redirect('dashboard');
 	}
 }
