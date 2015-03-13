@@ -18,8 +18,18 @@ android {
         }
     }
 }
-
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    //compile files('libs/dspec-0.1.1-sources.jar')
+    compile (name:'dspec-0.1.1', ext:'aar')
     compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:recyclerview-v7:21.0.3'
+    //compile 'org.lucasr.dspec:dspec:0.1.1@aar'
+
 }
+

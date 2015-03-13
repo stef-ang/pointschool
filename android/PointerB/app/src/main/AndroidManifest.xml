@@ -19,7 +19,17 @@
         <activity
             android:name=".SubActivity"
             android:label="@string/title_activity_sub" >
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".MyLayout"
+            android:label="@string/title_activity_my_layout" >
+        </activity>
+        <activity
+            android:name=".MyView"
+            android:label="@string/title_activity_my_view" >
         </activity>
     </application>
 

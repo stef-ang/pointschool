@@ -4,11 +4,14 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 
 
 public class SubActivity extends ActionBarActivity {
+    public static final String TAG="PENI";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,4 +49,48 @@ public class SubActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev){
+        switch(ev.getActionMasked()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "Activity  dispatchTouchEvent Down");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "Activity  dispatchTouchEvent Move");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, "Activity  dispatchTouchEvent Up");
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d(TAG, "Activity  dispatchTouchEvent cancel");
+                break;
+        }
+        boolean b = super.dispatchTouchEvent(ev);
+        Log.d(TAG, "Activity dispatchTouchEvent RETURNS " + b);
+        return false;
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        switch (event.getActionMasked()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "Activity on Touch Down");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "Activity on Touch Move");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, "Activity on Touch Up");
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d(TAG, "Activity on Touch Cancel");
+                break;
+        }
+        boolean b = super.onTouchEvent(event);
+        Log.d(TAG, "Activity on Touch RETURNS " + b);
+        return b;
+    }
+
 }

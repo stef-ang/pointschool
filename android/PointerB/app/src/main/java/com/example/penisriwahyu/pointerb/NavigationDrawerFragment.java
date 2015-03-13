@@ -2,16 +2,25 @@ package com.example.penisriwahyu.pointerb;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -19,11 +28,12 @@ import android.support.v7.widget.Toolbar;
  */
 public class NavigationDrawerFragment extends Fragment {
 
+    private RecyclerView recyclerView;
     public static final String PREF_FILE_NAME="test_pref";
     public static final String KEY_USER_LEARNED_DRAWER="user_learned_drawer";
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-
+    private PeniAdapter adapter;
     private boolean mUserLearnedDrawer;
     private boolean mFormSavedInstanceState;
     private View containerView;
@@ -44,11 +54,46 @@ public class NavigationDrawerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
+        adapter = new PeniAdapter(getActivity(), getData());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addOnItemTouchListener(new RecycleTouchListener(getActivity(), recyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Toast.makeText(getActivity(), "On Click" + position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void longClick(View view, int position) {
+                Toast.makeText(getActivity(), "On Long Click" + position, Toast.LENGTH_SHORT).show();
+            }
+        }));
+        return layout;
+    }
+
+    public static List<Information> getData(){
+        List<Information> data = new ArrayList<>();
+        int[] icons = {R.drawable.ic_profile, R.drawable.ic_info, R.drawable.ic_content};
+        String[] titles = {"Profile", "Info", "Content"};
+        /*for(int i=0; i<titles.length && i<icons.length; i++){
+            Information current = new Information();
+            current.iconId = icons[i];
+            current.title = titles[i];
+            data.add(current);
+        }*/
+        for(int i=0; i<icons.length && i<titles.length; i++){
+            Information current = new Information();
+            current.iconId = icons[i];
+            current.title = titles[i];
+            data.add(current);
+        }
+        return data;
     }
 
 
-    public void setUp(int fragmentId, DrawerLayout drawerLayout, Toolbar toolbar) {
+    public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
         containerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close){
@@ -68,10 +113,11 @@ public class NavigationDrawerFragment extends Fragment {
                 getActivity().invalidateOptionsMenu();
             }
 
-            /*@Override
+           @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
-                Log.d("PENI","offset "+slideOffset);
-            }*/
+                super.onDrawerSlide(drawerView,slideOffset);
+               toolbar.setAlpha(1-slideOffset/2);
+            }
         };
         if(!mUserLearnedDrawer && !mFormSavedInstanceState){
             mDrawerLayout.openDrawer(containerView);
@@ -95,5 +141,52 @@ public class NavigationDrawerFragment extends Fragment {
     public static String readFromPreferences(Context context, String preferenceName, String defaultValue){
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(preferenceName, defaultValue);
+    }
+
+    static class RecycleTouchListener implements RecyclerView.OnItemTouchListener{
+        private GestureDetector gestureDetector;
+        private ClickListener clickListener;
+
+        public RecycleTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener){
+            Log.d("PENI", "constructor invoke");
+            this.clickListener=clickListener;
+            gestureDetector = new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
+
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    Log.d("PENI", "onSingleTapUp");
+                    //return super.onSingleTapUp(e);
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                    if(child!=null && clickListener!=null){
+                        clickListener.longClick(child, recyclerView.getChildPosition(child));
+                    }
+                    Log.d("PENI", "onLongPress");
+                }
+            });
+        }
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            if(child!=null && clickListener!=null && gestureDetector.onTouchEvent(e)){
+                clickListener.onClick(child,rv.getChildPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+            Log.d("PENI", "onTouchEvent " + e);
+
+        }
+    }
+
+    public static interface ClickListener{
+        public void onClick(View view, int position);
+        public void longClick(View view, int position);
     }
 }
