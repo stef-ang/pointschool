@@ -48,14 +48,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_CATATAN_MATERI = "catatan_materi";
 
     // Paket_Soal Table Columns names
-    private static final String KEY_ID_PAKET_SOAL = "id_materi";
+    private static final String KEY_ID_PAKET_SOAL = "id_paket_soal";
     //private static final String KEY_ID_SUBBAB = "id_subbab";
     private static final String KEY_NOMOR_PAKET_SOAL = "nomor_paket_soal";
     private static final String KEY_NAMA_PAKET_SOAL = "nama_paket_soal";
     private static final String KEY_LEVEL_SOAL = "level_soal";
 
     // Soal Table Columns names
-    private static final String KEY_ID_SOAL = "id_materi";
+    private static final String KEY_ID_SOAL = "id_soal";
     //private static final String KEY_ID_PAKET_SOAL = "id_paket_soal";
     private static final String KEY_NOMOR_SOAL = "nomor_soal";
     private static final String KEY_ID_FILE_SOAL = "id_file_soal";
