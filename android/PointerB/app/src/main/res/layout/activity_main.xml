@@ -15,13 +15,18 @@
     <include android:id="@+id/app_bar"
         layout="@layout/app_bar"/>
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/fragment_ku"
         android:layout_below="@+id/app_bar"
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+    </FrameLayout>
 
 </RelativeLayout>
+
     <fragment
         android:layout_width="@dimen/nav_drawer_width"
         android:id="@+id/fragment_navigation_drawer"
@@ -30,4 +35,6 @@
         android:layout="@layout/fragment_navigation_drawer"
         android:name="com.example.penisriwahyu.pointerb.NavigationDrawerFragment"
         tools:layout="@layout/fragment_navigation_drawer" />
+
+
 </android.support.v4.widget.DrawerLayout>

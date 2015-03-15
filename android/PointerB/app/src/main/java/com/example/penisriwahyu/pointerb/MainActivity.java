@@ -3,6 +3,7 @@ package com.example.penisriwahyu.pointerb;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +27,21 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        Fragment fg1 = (FragmentTwo) getSupportFragmentManager().findFragmentById(R.id.fragment_ku);
+        if(fg1 == null){
+            FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+            FragmentOne frag = new FragmentOne();
+            fr.replace(R.id.fragment_ku,frag);
+            fr.commit();
+        }
+
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout)findViewById(R.id.drawer_layout), toolbar);
+        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
     }
 
-
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -55,4 +67,6 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

@@ -1,7 +1,9 @@
 package com.example.penisriwahyu.pointerb;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,7 +21,7 @@ import java.util.List;
  * Created by Peni Sriwahyu on 3/8/2015.
  */
 public class PeniAdapter extends RecyclerView.Adapter<PeniAdapter.MyViewHolder>{
-
+    ClickListener clickListener;
     List<Information> data= Collections.emptyList();
     private LayoutInflater inflater;
     private Context context;
@@ -30,6 +32,10 @@ public class PeniAdapter extends RecyclerView.Adapter<PeniAdapter.MyViewHolder>{
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;
+    }
+
+   public void setClickListener(ClickListener clickListener){
+        this.clickListener=clickListener;
     }
 
     public void delete(int position){
@@ -45,7 +51,7 @@ public class PeniAdapter extends RecyclerView.Adapter<PeniAdapter.MyViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         Information current = data.get(position);
         holder.title.setText(current.title);
         holder.icon.setImageResource(current.iconId);
@@ -53,25 +59,34 @@ public class PeniAdapter extends RecyclerView.Adapter<PeniAdapter.MyViewHolder>{
     }
 
 
+
     @Override
     public int getItemCount() {
         return data.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title;
         ImageView icon;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
+            itemView.setOnClickListener(this);
             title = (TextView) itemView.findViewById(R.id.listText);
             icon = (ImageView) itemView.findViewById(R.id.listIcon);
 
         }
+
+        @Override
+        public void onClick(View v) {
+            //context.startActivity(new Intent(context, SubActivity.class));
+            if (clickListener != null){
+                clickListener.itemClicked(v, getPosition());
+            }
+        }
     }
-
-
-
+    public interface ClickListener{
+        public void itemClicked(View view, int position);
+    }
 }

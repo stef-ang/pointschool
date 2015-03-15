@@ -4,19 +4,16 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 
 
-public class SubActivity extends ActionBarActivity {
-    public static final String TAG="PENI";
+public class SubActivity2 extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sub);
+        setContentView(R.layout.sub_activity2);
         Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
@@ -28,7 +25,7 @@ public class SubActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sub, menu);
+        getMenuInflater().inflate(R.menu.menu_sub_activity2, menu);
         return true;
     }
 
@@ -43,13 +40,10 @@ public class SubActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if(id == android.R.id.home){
+        if (id == R.id.home){
             NavUtils.navigateUpFromSameTask(this);
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }
