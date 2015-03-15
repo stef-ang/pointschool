@@ -1,4 +1,4 @@
-package com.pointschool.pointschool;
+package com.pointschool.pointschool.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -32,19 +32,19 @@ public class Mapel implements Parcelable {
         this.nama_mapel = in.readString();
     }
 
-    public int getID(){
+    public int getIdMapel(){
         return this.id_mapel;
     }
 
-    public void setID(int id){
+    public void setIdMapel(int id){
         this.id_mapel = id;
     }
 
-    public String getNama(){
+    public String getNamaMapel(){
         return this.nama_mapel;
     }
 
-    public void setID(String nama){
+    public void setNamaMapel(String nama){
         this.nama_mapel = nama;
     }
 
@@ -60,8 +60,8 @@ public class Mapel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int flags){
-        parcel.writeInt(getID());
-        parcel.writeString(getNama());
+        parcel.writeInt(getIdMapel());
+        parcel.writeString(getNamaMapel());
     }
 
     public static final Parcelable.Creator<Mapel> CREATOR = new Parcelable.Creator<Mapel>(){

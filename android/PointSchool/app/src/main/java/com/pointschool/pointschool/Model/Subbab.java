@@ -1,4 +1,4 @@
-package com.pointschool.pointschool;
+package com.pointschool.pointschool.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,7 +8,7 @@ import android.os.Parcelable;
  */
 public class Subbab implements Parcelable{
     int id_subbab;
-//    int id_bab;
+    int id_bab;
     int nomor_subbab;
     String nama_subbab;
 
@@ -16,10 +16,10 @@ public class Subbab implements Parcelable{
         super();
     }
 
-    public Subbab(int id, int no, String nama){
+    public Subbab(int id, int bab, int no, String nama){
         super();
         this.id_subbab = id;
-//        this.id_bab = bab;
+        this.id_bab = bab;
         this.nomor_subbab = no;
         this.nama_subbab = nama;
     }
@@ -37,35 +37,35 @@ public class Subbab implements Parcelable{
     }
 
 
-    public int getId_subbab(){
+    public int getIdSubbab(){
         return this.id_subbab;
     }
 
-    public void setId_subbab(int id){
+    public void setIdSubbab(int id){
         this.id_subbab = id;
     }
-/*
-    public int getId_bab(){
+
+    public int getIdBab(){
         return this.id_bab;
     }
 
-    public void setId_bab(int id){
+    public void setIdBab(int id){
         this.id_bab = id;
     }
-*/
-    public int getNomor_subbab(){
+
+    public int getNomorSubbab(){
         return this.nomor_subbab;
     }
 
-    public void setNomor_subbab(int id){
+    public void setNomorSubbab(int id){
         this.nomor_subbab = id;
     }
 
-    public String getNama_subbab(){
+    public String getNamaSubbab(){
         return this.nama_subbab;
     }
 
-    public void setNama_subbab(String nama){
+    public void setNamaSubbab(String nama){
         this.nama_subbab = nama;
     }
 
@@ -81,9 +81,9 @@ public class Subbab implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int flags){
-        parcel.writeInt(getId_subbab());
-        parcel.writeInt(getNomor_subbab());
-        parcel.writeString(getNama_subbab());
+        parcel.writeInt(getIdSubbab());
+        parcel.writeInt(getNomorSubbab());
+        parcel.writeString(getNamaSubbab());
     }
 
     public static final Parcelable.Creator<Subbab> CREATOR = new Parcelable.Creator<Subbab>(){

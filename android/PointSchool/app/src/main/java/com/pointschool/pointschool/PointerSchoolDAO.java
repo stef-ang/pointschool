@@ -2,7 +2,7 @@ package com.pointschool.pointschool;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import com.pointschool.pointschool.database.DatabaseHandler;
+
 import java.sql.SQLException;
 
 /**

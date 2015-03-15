@@ -1,4 +1,4 @@
-package com.pointschool.pointschool;
+package com.pointschool.pointschool.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable;
 public class PaketSoal implements Parcelable{
 
     int id_paket_soal;
-//    int id_bab;
+    int id_bab;
     int nomor_paket_soal;
     String nama_paket_soal;
     String level_soal;
@@ -18,10 +18,10 @@ public class PaketSoal implements Parcelable{
         super();
     }
 
-    public  PaketSoal(int id, int no, String nama, String level){
+    public  PaketSoal(int id, int bab, int no, String nama, String level){
         super();
         this.id_paket_soal = id;
-//        this.id_bab = bab;
+        this.id_bab = bab;
         this.nomor_paket_soal = no;
         this.nama_paket_soal = nama;
         this.level_soal = level;
@@ -40,44 +40,44 @@ public class PaketSoal implements Parcelable{
         this.nama_paket_soal = in.readString();
         this.level_soal = in.readString();
     }
-/*
-    public int getid_bab(){
+
+    public int getIdBab(){
         return this.id_bab;
     }
 
-    public void setId_bab(int id){
+    public void setIdBab(int id){
         this.id_bab = id;
     }
-*/
-    public int getId_paket_soal(){
+
+    public int getIdPaketSoal(){
         return this.id_paket_soal;
     }
 
-    public void setId_paket_soal(int id){
+    public void setIdPaketSoal(int id){
         this.id_paket_soal = id;
     }
 
-    public int getNomor_paket_soal(){
+    public int getNomorPaketSoal(){
         return this.nomor_paket_soal;
     }
 
-    public void setNomor_paket_soal(int id){
+    public void setNomorPaketSoal(int id){
         this.nomor_paket_soal = id;
     }
 
-    public String getNama_paket_soal(){
+    public String getNamaPaketSoal(){
         return this.nama_paket_soal;
     }
 
-    public void setNama_paket_soal(String nama){
+    public void setNamaPaketSoal(String nama){
         this.nama_paket_soal = nama;
     }
 
-    public String getLevel_soal(){
+    public String getLevelSoal(){
         return this.level_soal;
     }
 
-    public void setLevel_soal(String level){
+    public void setLevelSoal(String level){
         this.level_soal = level;
     }
 
@@ -93,10 +93,10 @@ public class PaketSoal implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int flags){
-        parcel.writeInt(getId_paket_soal());
-        parcel.writeInt(getNomor_paket_soal());
-        parcel.writeString(getNama_paket_soal());
-        parcel.writeString(getLevel_soal());
+        parcel.writeInt(getIdPaketSoal());
+        parcel.writeInt(getNomorPaketSoal());
+        parcel.writeString(getNamaPaketSoal());
+        parcel.writeString(getLevelSoal());
     }
 
     public static final Parcelable.Creator<PaketSoal> CREATOR = new Parcelable.Creator<PaketSoal>(){

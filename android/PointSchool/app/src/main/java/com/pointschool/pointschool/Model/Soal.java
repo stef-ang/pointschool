@@ -1,4 +1,4 @@
-package com.pointschool.pointschool;
+package com.pointschool.pointschool.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,7 +12,7 @@ import android.os.Parcelable;
 public class Soal implements Parcelable {
 
     int id_soal;
-//    int id_paket_soal;
+    int id_paket_soal;
     int nomor_soal;
     String id_file_soal;
     String pilihan1;
@@ -20,6 +20,7 @@ public class Soal implements Parcelable {
     String pilihan3;
     String pilihan4;
     String pilihan5;
+    String kunci_soal;
     String pembahasan_soal;
     String catatan_soal;
 
@@ -27,12 +28,13 @@ public class Soal implements Parcelable {
         super();
     }
 
-    public Soal(int id, int no, String id_file, String Pilhan1, String Pilhan2, String Pilhan3, String Pilhan4, String Pilhan5, String pembahasan, String catatan) {
+    public Soal(int id, int paket, int no, String id_file, String Pilhan1, String Pilhan2, String Pilhan3, String Pilhan4, String Pilhan5, String kunci_soal, String pembahasan, String catatan) {
         super();
-//        this.id_paket_soal = paket;
+        this.id_paket_soal = paket;
         this.id_soal = id;
         this.nomor_soal = no;
         this.id_file_soal = id_file;
+        this.kunci_soal = kunci_soal;
         this.pembahasan_soal = pembahasan;
         this.catatan_soal = catatan;
         this.pilihan1 = Pilhan1;
@@ -42,9 +44,10 @@ public class Soal implements Parcelable {
         this.pilihan5 = Pilhan5;
     }
 
-    public Soal(int no, String id_file, String Pilhan1, String Pilhan2, String Pilhan3, String Pilhan4, String Pilhan5, String pembahasan, String catatan) {
+    public Soal(int no, String id_file, String Pilhan1, String Pilhan2, String Pilhan3, String Pilhan4, String Pilhan5, String kunci_soal, String pembahasan, String catatan) {
         this.nomor_soal = no;
         this.id_file_soal = id_file;
+        this.kunci_soal = kunci_soal;
         this.pembahasan_soal = pembahasan;
         this.catatan_soal = catatan;
         this.pilihan1 = Pilhan1;
@@ -70,51 +73,59 @@ public class Soal implements Parcelable {
     }
 
 
-    public int getId_soal(){
+    public int getIdSoal(){
         return this.id_soal;
     }
 
-    public void setId_soal(int id){
+    public void setIdSoal(int id){
         this.id_soal = id;
     }
-/*
-    public int getId_paket_soal(){
+
+    public int getIdPaketSoal(){
         return this.id_paket_soal;
     }
 
-    public void setId_paket_soal(int id){
+    public void setIdPaketSoal(int id){
         this.id_paket_soal = id;
     }
-*/
-    public int getNomor_soal(){
+
+    public int getNomorSoal(){
         return this.nomor_soal;
     }
 
-    public void setNomor_soal(int id){
+    public void setNomorSoal(int id){
         this.nomor_soal = id;
     }
 
-    public String getId_file_soal(){
+    public String getIdFileSoal(){
         return this.id_file_soal;
     }
 
-    public void setId_file_soal(String nama){
+    public void setIdFileSoal(String nama){
         this.id_file_soal = nama;
     }
 
-    public String getPembahasan_soal(){
+    public String getKunciSoal(){
+        return this.kunci_soal;
+    }
+
+    public void setKunciSoal(String kunci){
+        this.kunci_soal = kunci;
+    }
+
+    public String getPembahasanSoal(){
         return this.pembahasan_soal;
     }
 
-    public void setPembahasan_soal(String pem){
+    public void setPembahasanSoal(String pem){
         this.pembahasan_soal = pem;
     }
 
-    public String getCatatan_soal(){
+    public String getCatatanSoal(){
         return this.catatan_soal;
     }
 
-    public void setCatatan_soal(String cat){
+    public void setCatatanSoal(String cat){
         this.catatan_soal = cat;
     }
 
@@ -170,11 +181,11 @@ public class Soal implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int flags){
-        parcel.writeInt(getId_soal());
-        parcel.writeInt(getNomor_soal());
-        parcel.writeString(getId_file_soal());
-        parcel.writeString(getPembahasan_soal());
-        parcel.writeString(getCatatan_soal());
+        parcel.writeInt(getIdSoal());
+        parcel.writeInt(getNomorSoal());
+        parcel.writeString(getIdFileSoal());
+        parcel.writeString(getPembahasanSoal());
+        parcel.writeString(getCatatanSoal());
         parcel.writeString(getPilihan1());
         parcel.writeString(getPilihan2());
         parcel.writeString(getPilihan3());

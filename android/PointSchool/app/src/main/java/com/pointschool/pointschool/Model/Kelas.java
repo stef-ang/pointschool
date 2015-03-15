@@ -1,4 +1,4 @@
-package com.pointschool.pointschool;
+package com.pointschool.pointschool.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -34,33 +34,33 @@ public class Kelas implements Parcelable {
     }
 
 
-    public int getId_kelas(){
+    public int getIdKelas(){
         return this.id_kelas;
     }
 
-    public void setId_kelas(int id){
+    public void setIdKelas(int id){
         this.id_kelas = id;
     }
 
-    public int getNomor_kelas(){
+    public int getNomorKelas(){
         return this.nomor_kelas;
     }
 
-    public void setNomor_kelas(int id){
+    public void setNomorKelas(int id){
         this.nomor_kelas = id;
     }
 
-    public String getNama_kelas(){
+    public String getNamaKelas(){
         return this.nama_kelas;
     }
 
-    public void setNama_kelas(String nama){
+    public void setNamaKelas(String nama){
         this.nama_kelas = nama;
     }
 
     @Override
     public String toString(){
-        return "id:" + id_kelas + ", nomor Kelaas:" + nomor_kelas + ", nama Kelas:" + nama_kelas;
+        return "id:" + id_kelas + ", nomor Kelas:" + nomor_kelas + ", nama Kelas:" + nama_kelas;
     }
 
     @Override
@@ -70,9 +70,9 @@ public class Kelas implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int flags){
-        parcel.writeInt(getId_kelas());
-        parcel.writeInt(getNomor_kelas());
-        parcel.writeString(getNama_kelas());
+        parcel.writeInt(getIdKelas());
+        parcel.writeInt(getNomorKelas());
+        parcel.writeString(getNamaKelas());
     }
 
     public static final Parcelable.Creator<Kelas> CREATOR = new Parcelable.Creator<Kelas>(){

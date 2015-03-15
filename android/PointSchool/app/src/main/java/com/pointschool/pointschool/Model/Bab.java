@@ -1,4 +1,4 @@
-package com.pointschool.pointschool;
+package com.pointschool.pointschool.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,8 +9,8 @@ import android.os.Parcelable;
 public class Bab implements Parcelable{
 
     int id_bab;
-//    int id_kelas;
-//    int id_mapel;
+    int id_kelas;
+    int id_mapel;
     int nomor_bab;
     String nama_bab;
 
@@ -18,11 +18,11 @@ public class Bab implements Parcelable{
         super();
     }
 
-    public Bab(int id, int no, String nama){
+    public Bab(int id, int kel, int mapel,int no, String nama){
         super();
-//        this.id_mapel = mapel;
+        this.id_mapel = mapel;
         this.id_bab = id;
-//        this.id_kelas = kel;
+        this.id_kelas = kel;
         this.nomor_bab = no;
         this.nama_bab = nama;
     }
@@ -38,43 +38,43 @@ public class Bab implements Parcelable{
         this.nama_bab = in.readString();
     }
 
-    public int getid_bab(){
+    public int getIdBab(){
         return this.id_bab;
     }
 
-    public void setId_bab(int id){
+    public void setIdBab(int id){
         this.id_bab = id;
     }
-/*
-    public int getId_kelas(){
+
+    public int getIdKelas(){
         return this.id_kelas;
     }
 
-    public void setId_kelas(int id){
+    public void setIdKelas(int id){
         this.id_kelas = id;
     }
 
-    public int getId_mapel(){
+    public int getIdMapel(){
         return this.id_mapel;
     }
 
-    public void setId_mapel(int id){
+    public void setIdMapel(int id){
         this.id_mapel = id;
     }
-*/
-    public int getNomor_bab(){
+
+    public int getNomorBab(){
         return this.nomor_bab;
     }
 
-    public void setNomor_bab(int id){
+    public void setNomorBab(int id){
         this.nomor_bab = id;
     }
 
-    public String getNama_bab(){
+    public String getNamaBab(){
         return this.nama_bab;
     }
 
-    public void setNama_bab(String nama){
+    public void setNamaBab(String nama){
         this.nama_bab = nama;
     }
 
@@ -90,9 +90,9 @@ public class Bab implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int flags){
-        parcel.writeInt(getid_bab());
-        parcel.writeInt(getNomor_bab());
-        parcel.writeString(getNama_bab());
+        parcel.writeInt(getIdBab());
+        parcel.writeInt(getNomorBab());
+        parcel.writeString(getNamaBab());
      }
 
     public static final Parcelable.Creator<Bab> CREATOR = new Parcelable.Creator<Bab>(){

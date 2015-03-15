@@ -1,4 +1,4 @@
-package com.pointschool.pointschool;
+package com.pointschool.pointschool.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable;
 public class Materi implements Parcelable {
 
     int id_materi;
-//    int id_subbab;
+    int id_subbab;
     int nomor_materi;
     String id_file_materi;
     String catatan_materi;
@@ -18,10 +18,10 @@ public class Materi implements Parcelable {
         super();
     }
 
-    public Materi(int id_mat, int nomor, String id_file, String catatan_materi){
+    public Materi(int id_mat, int id_sub, int nomor, String id_file, String catatan_materi){
         super();
         this.id_materi = id_mat;
-      //  this.id_subbab = id_sub;
+        this.id_subbab = id_sub;
         this.nomor_materi = nomor;
         this.id_file_materi = id_file;
         this.catatan_materi = catatan_materi;
@@ -42,42 +42,42 @@ public class Materi implements Parcelable {
 
     }
 
-    public int getId_materi(){
+    public int getIdMateri(){
         return this.id_materi;
     }
 
-    public void setId_materi(int id){
+    public void setIdMateri(int id){
         this.id_materi = id;
     }
-/*
-    public int getId_subbab(){
+
+    public int getIdSubbab(){
         return this.id_subbab;
     }
 
-    public void setId_subbab(int id){
+    public void setIdSubbab(int id){
         this.id_subbab = id;
     }
-*/
-    public int getNomor_materi(){
+
+    public int getNomorMateri(){
         return this.nomor_materi;
     }
 
-    public void setNomor_materi(int id){
+    public void setNomorMateri(int id){
         this.nomor_materi = id;
     }
-    public String getId_file_materi(){
+    public String getIdFileMateri(){
         return this.id_file_materi;
     }
 
-    public void setId_file_materi(String id){
+    public void setIdFileMateri(String id){
         this.id_file_materi = id;
     }
 
-    public String getCatatan_materi(){
+    public String getCatatanMateri(){
         return this.catatan_materi;
     }
 
-    public void setCatatan_materi(String materi){
+    public void setCatatanMateri(String materi){
         this.catatan_materi = materi;
     }
 
@@ -93,10 +93,10 @@ public class Materi implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int flags){
-        parcel.writeInt(getId_materi());
-        parcel.writeInt(getNomor_materi());
-        parcel.writeString(getId_file_materi());
-        parcel.writeString(getCatatan_materi());
+        parcel.writeInt(getIdMateri());
+        parcel.writeInt(getNomorMateri());
+        parcel.writeString(getIdFileMateri());
+        parcel.writeString(getCatatanMateri());
     }
 
     public static final Parcelable.Creator<Materi> CREATOR = new Parcelable.Creator<Materi>(){

@@ -1,9 +1,15 @@
 package com.pointschool.pointschool;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.pointschool.pointschool.Model.Mapel;
+
+import java.util.List;
 
 
 public class  MainActivity extends ActionBarActivity {
@@ -12,8 +18,32 @@ public class  MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String param = "bab";
+        String param = "show";
         new LongOperation(this).execute(param);
+
+        if (findViewById(R.id.fragment_container) != null) {
+
+            if (savedInstanceState != null) {
+                return;
+            }
+            DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+           // Mapel mapel1= new Mapel(3,"Bahasa Indonesia");
+            //db.createMapel(mapel1);
+            List<Mapel> mapels = db.getAllMapel();
+            for(Mapel mapel : mapels){
+                Log.d("mapel", mapel.toString());
+            }
+            BrowserFragment firstFragment = new BrowserFragment();
+
+            // In case this activity was started with special instructions from an
+            // Intent, pass the Intent's extras to the fragment as arguments
+            firstFragment.setArguments(getIntent().getExtras());
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, firstFragment).commit();
+
+        }
     }
 
 
@@ -38,4 +68,6 @@ public class  MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
