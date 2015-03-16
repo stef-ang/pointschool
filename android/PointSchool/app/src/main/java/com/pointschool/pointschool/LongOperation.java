@@ -4,6 +4,15 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.pointschool.pointschool.Model.Bab;
+import com.pointschool.pointschool.Model.Kelas;
+import com.pointschool.pointschool.Model.Mapel;
+import com.pointschool.pointschool.Model.Materi;
+import com.pointschool.pointschool.Model.PaketSoal;
+import com.pointschool.pointschool.Model.Soal;
+import com.pointschool.pointschool.Model.Subbab;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -33,43 +42,77 @@ public class LongOperation extends AsyncTask<String, Void, Void> {
         context = ctx;
     }
     protected Void doInBackground(String... params) {
+        String[] param = {"kelas","mapel","bab","subbab","materi","paket_soal","soal"};
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost("http://128.199.140.247/pointschool/index.php/rest");
-        List<NameValuePair> parameters = new ArrayList<NameValuePair>(2);
-        parameters.add(new BasicNameValuePair("table", params[0]));
-        try {
-            httpPost.setEntity(new UrlEncodedFormEntity(parameters));
+        for(String table : param){
+            List<NameValuePair> parameters = new ArrayList<NameValuePair>(2);
+            parameters.add(new BasicNameValuePair("table", table));
+            try {
+                httpPost.setEntity(new UrlEncodedFormEntity(parameters));
 
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        try {
-            HttpResponse response = httpClient.execute(httpPost);
-            // write response to log
-            if (response.getStatusLine().getStatusCode() == 200) {
-                HttpEntity entity = response.getEntity();
-                String json = EntityUtils.toString(entity);
-                Log.d("Http Post Response:", json);
-
-                // Getting JSON Array node
-                JSONArray jsonArr = new JSONArray(json);
-
-                // looping through All Contacts
-                for (int i = 0; i < jsonArr.length(); i++) {
-                    JSONObject jsonObj = jsonArr.getJSONObject(i);
-                    Log.d("JSON Object",jsonObj.toString());
-                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
             }
+            try {
+                HttpResponse response = httpClient.execute(httpPost);
+                // write response to log
+                if (response.getStatusLine().getStatusCode() == 200) {
+                    HttpEntity entity = response.getEntity();
+                    String json = EntityUtils.toString(entity);
+                    Log.d("Http Post Response("+table+")", json);
 
-        } catch (ClientProtocolException e) {
-            // Log exception
-            e.printStackTrace();
-        } catch (IOException e) {
-            // Log exception
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+                    // Getting JSON Array node
+                    JSONArray jsonArr = new JSONArray(json);
+
+                    // looping through All Contacts
+                    for (int i = 0; i < jsonArr.length(); i++) {
+                        DatabaseHandler db = new DatabaseHandler(context);
+                        JSONObject jsonObj = jsonArr.getJSONObject(i);
+                        Gson gson = new Gson();
+                        if(table.equals("kelas")){
+                            Kelas kelas = gson.fromJson(jsonObj.toString(), Kelas.class);
+                            db.createKelas(kelas);
+                        }
+                        else if(table.equals("mapel")){
+                            Mapel mapel = gson.fromJson(jsonObj.toString(), Mapel.class);
+                            db.createMapel(mapel);
+                        }
+                        else if(table.equals("bab")){
+                            Bab bab = gson.fromJson(jsonObj.toString(), Bab.class);
+                            Log.d("bab","bab");
+                            db.createBab(bab);
+                        }
+                        else if(table.equals("subbab")){
+                            Log.d("subbab","subbab");
+                            Subbab subbab = gson.fromJson(jsonObj.toString(), Subbab.class);
+                            db.createSubbab(subbab);
+                        }
+                        else if(table.equals("materi")){
+                            Materi materi = gson.fromJson(jsonObj.toString(), Materi.class);
+                            db.createMateri(materi);
+                        }else if(table.equals("paket_soal")){
+                            PaketSoal paketsoal = gson.fromJson(jsonObj.toString(), PaketSoal.class);
+                            db.createPaketSoal(paketsoal);
+                        }else if(table.equals("soal")){
+                            Soal soal = gson.fromJson(jsonObj.toString(), Soal.class);
+                            db.createSoal(soal);
+                        }
+                        // Log.d("JSON Object",jsonObj.toString());
+                    }
+                }
+
+            } catch (ClientProtocolException e) {
+                // Log exception
+                e.printStackTrace();
+            } catch (IOException e) {
+                // Log exception
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
+
         return null;
     }
     protected void onPreExecute() {

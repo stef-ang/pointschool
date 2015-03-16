@@ -349,7 +349,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_CATATAN_MATERI, materi.getCatatanMateri());
 
         // insert row
-        long materi_id = db.insert(TABLE_BAB, null, values);
+        long materi_id = db.insert(TABLE_MATERI, null, values);
         return materi_id;
     }
 
@@ -499,7 +499,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NAMA_SUBBAB, subbab.getNamaSubbab());
 
         // insert row
-        long subbab_id = db.insert(TABLE_BAB, null, values);
+        long subbab_id = db.insert(TABLE_SUBBAB, null, values);
         return subbab_id;
     }
     /*

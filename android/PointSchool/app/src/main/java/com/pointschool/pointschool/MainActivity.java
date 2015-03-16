@@ -7,7 +7,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.pointschool.pointschool.Model.Bab;
+import com.pointschool.pointschool.Model.Kelas;
 import com.pointschool.pointschool.Model.Mapel;
+import com.pointschool.pointschool.Model.Materi;
+import com.pointschool.pointschool.Model.PaketSoal;
+import com.pointschool.pointschool.Model.Soal;
+import com.pointschool.pointschool.Model.Subbab;
 
 import java.util.List;
 
@@ -18,8 +24,7 @@ public class  MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String param = "show";
-        new LongOperation(this).execute(param);
+        new LongOperation(this).execute();
 
         if (findViewById(R.id.fragment_container) != null) {
 
@@ -27,12 +32,42 @@ public class  MainActivity extends ActionBarActivity {
                 return;
             }
             DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-           // Mapel mapel1= new Mapel(3,"Bahasa Indonesia");
-            //db.createMapel(mapel1);
-            List<Mapel> mapels = db.getAllMapel();
-            for(Mapel mapel : mapels){
-                Log.d("mapel", mapel.toString());
+
+           /* List<Bab> babs = db.getAllBab();
+            Log.d("Bab","LIST");
+            for(Bab bab : babs){
+                Log.d("Bab", bab.toString());
             }
+            List<Kelas> kelass = db.getAllKelas();
+            Log.d("kelas","LIST");
+            for(Kelas kelas : kelass){
+                Log.d("kelas", kelas.toString());
+            }
+            List<Mapel> mapels = db.getAllMapel();
+            Log.d("Mapel","LIST");
+            for(Mapel mapel : mapels){
+                Log.d("Mapel", mapel.toString());
+            }
+            List<Materi> materis = db.getAllMateri();
+            Log.d("Materi","LIST");
+            for(Materi materi : materis){
+                Log.d("Materi", materi.toString());
+            }
+            List<PaketSoal> paketsoals = db.getAllPaketSoal();
+            Log.d("PaketSoal","LIST");
+            for(PaketSoal paketsoal : paketsoals){
+                Log.d("Paketsoal", paketsoal.toString());
+            }
+            List<Soal> soals = db.getAllSoal();
+            Log.d("Soal","LIST");
+            for(Soal soal : soals){
+                Log.d("Soal", soal.toString());
+            }
+            List<Subbab> subbabs = db.getAllSubbab();
+            Log.d("Subbab","LIST");
+            for(Subbab subbab : subbabs){
+                Log.d("Subbab", subbab.toString());
+            }*/
             BrowserFragment firstFragment = new BrowserFragment();
 
             // In case this activity was started with special instructions from an
