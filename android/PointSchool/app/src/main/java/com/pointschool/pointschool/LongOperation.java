@@ -35,13 +35,19 @@ import java.util.List;
 /**
  * Created by Karsten on 09/03/2015.
  */
-public class LongOperation extends AsyncTask<String, Void, Void> {
+public class LongOperation extends AsyncTask<String, Void, Void> //1. parameter, 2. ???, 3. return type
+{
     private Context context;
     private ProgressDialog pDialog;
+
+    // constructor
     public LongOperation(Context ctx){
         context = ctx;
     }
-    protected Void doInBackground(String... params) {
+
+    protected Void doInBackground(String... params)
+    {
+        DatabaseHandler db = new DatabaseHandler(context);
         String[] param = {"kelas","mapel","bab","subbab","materi","paket_soal","soal"};
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost("http://128.199.140.247/pointschool/index.php/rest");
@@ -67,7 +73,7 @@ public class LongOperation extends AsyncTask<String, Void, Void> {
 
                     // looping through All Contacts
                     for (int i = 0; i < jsonArr.length(); i++) {
-                        DatabaseHandler db = new DatabaseHandler(context);
+
                         JSONObject jsonObj = jsonArr.getJSONObject(i);
                         Gson gson = new Gson();
                         if(table.equals("kelas")){
@@ -91,10 +97,12 @@ public class LongOperation extends AsyncTask<String, Void, Void> {
                         else if(table.equals("materi")){
                             Materi materi = gson.fromJson(jsonObj.toString(), Materi.class);
                             db.createMateri(materi);
-                        }else if(table.equals("paket_soal")){
+                        }
+                        else if(table.equals("paket_soal")){
                             PaketSoal paketsoal = gson.fromJson(jsonObj.toString(), PaketSoal.class);
                             db.createPaketSoal(paketsoal);
-                        }else if(table.equals("soal")){
+                        }
+                        else if(table.equals("soal")){
                             Soal soal = gson.fromJson(jsonObj.toString(), Soal.class);
                             db.createSoal(soal);
                         }
@@ -115,9 +123,11 @@ public class LongOperation extends AsyncTask<String, Void, Void> {
 
         return null;
     }
+
     protected void onPreExecute() {
        pDialog = ProgressDialog.show(context, "", "Please Wait...", true, false);
     }
+
     protected void onPostExecute(Void unused) {
         if (pDialog.isShowing())
             pDialog.dismiss();
