@@ -10,9 +10,11 @@ class Login extends CI_Controller {
 
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
+		$data =  array('username' => $username);
 		$this->load->model('login_model');
 		if ($this->login_model->checkdata($username,$password)==1){
+			$this->session->set_userdata($data);
+
 			$header['title'] = "Dashboard";
 			$this->load->view('header_sidebar',$header);
 			
@@ -20,7 +22,8 @@ class Login extends CI_Controller {
 			$this->load->view('footer');	
 		}
 		else{
-			$this->load->view('login_view');
+			redirect('login?status=0', 'refresh');
+			//$this->load->view('login_view');
 		}
 
 	}

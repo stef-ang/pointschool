@@ -48,13 +48,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user"></i>
-                        ADMIN
+                        <?=$this->session->userdata('username');?>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="divider"></li>
                         <li>
-                            <a href="<?=site_url("logout")?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <center><a href="<?=site_url("logout")?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a></center>
                         </li>
                     </ul>
                 </li>
