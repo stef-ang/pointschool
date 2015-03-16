@@ -3,16 +3,40 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp">
 
-    <TextView
-        android:id="@+id/frag1_text"
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="FragmentOne"
-        android:textColor="#000"/>
+        android:layout_gravity="center"
+        android:text="SD"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:textColor="#000"
+        android:background="@drawable/btn_state"/>
+        android:id="@+id/sd" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="SMP"
+        android:layout_weight="1"
+        android:textColor="#000"
+        android:background="@drawable/btn_state"/>
+        android:id="@+id/smp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="SMA"
+        android:textColor="#000"
+        android:layout_weight="1"
+        android:background="@drawable/btn_state"/>
+        android:id="@+id/sma" />
 
 
 
