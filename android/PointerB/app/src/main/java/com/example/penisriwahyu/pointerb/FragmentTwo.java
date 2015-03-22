@@ -27,8 +27,8 @@ public class FragmentTwo extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_two, container, false);
-        Button but = (Button) view.findViewById(R.id.sd);
-        but.setOnClickListener(this);
+        //Button but = (Button) view.findViewById(R.id.sd);
+        //but.setOnClickListener(this);
         return view;
 
     }
@@ -37,6 +37,6 @@ public class FragmentTwo extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         Toast.makeText(this.getActivity(), "Button is clicked fragment 2!", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(getActivity(), SubActivity2.class));
+        //startActivity(new Intent(getActivity(), SubActivity2.class));
     }
 }

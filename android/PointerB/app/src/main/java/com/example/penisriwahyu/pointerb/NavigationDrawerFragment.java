@@ -80,8 +80,8 @@ public class NavigationDrawerFragment extends Fragment implements PeniAdapter.Cl
 
     public static List<Information> getData(){
         List<Information> data = new ArrayList<>();
-        int[] icons = {R.drawable.ic_profile, R.drawable.ic_info, R.drawable.ic_content};
-        String[] titles = {"Profile", "Info", "Content"};
+        int[] icons = {R.drawable.ic_content, R.drawable.ic_profile, R.drawable.ic_info};
+        String[] titles = {"PointSchool", "Profile", "Info"};
         for(int i=0; i<icons.length && i<titles.length; i++){
             Information current = new Information();
             current.iconId = icons[i];
@@ -147,22 +147,22 @@ public class NavigationDrawerFragment extends Fragment implements PeniAdapter.Cl
         FragmentTransaction fr = getFragmentManager().beginTransaction();
         switch (position){
             case 0:
-                FragmentThree frag = new FragmentThree();
+                FragmentOne frag = new FragmentOne();
                 fr.replace(R.id.fragment_ku,frag);
                 fr.addToBackStack(null);
                 fr.commit();
-                getActivity().setTitle("Profile");
+                getActivity().setTitle("PointerSchool");
                 mDrawerLayout.closeDrawer(containerView);
                 break;
             case 1:
-                startActivity(new Intent(getActivity(), SubActivity.class));
+                startActivity(new Intent(getActivity(), SubActivity2.class));
                 break;
             case 2:
                 FragmentTwo frag2 = new FragmentTwo();
                 fr.replace(R.id.fragment_ku,frag2);
                 fr.addToBackStack(null);
                 fr.commit();
-                getActivity().setTitle("Content");
+                getActivity().setTitle("Info");
                 mDrawerLayout.closeDrawer(containerView);
                 break;
             default:

@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">PointerSchool</string>
-    <string name="title_activity_main">Home</string>
+    <string name="title_activity_main">PointerSchool</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="next">Next</string>
@@ -13,5 +13,8 @@
     <string name="title_activity_my_layout">MyLayout</string>
     <string name="title_activity_my_view">MyView</string>
     <string name="title_activity_sub_activity2">SD</string>
+    <string name="title_activity_sub_activity_smp">SubActivitySMP</string>
+    <string name="title_activity_sub_activity_sm">SubActivitySMA</string>
+    <string name="title_activity_dynamic_matkul">DynamicMatkul</string>
 
 </resources>
