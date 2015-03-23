@@ -13,8 +13,17 @@
     <string name="title_activity_my_layout">MyLayout</string>
     <string name="title_activity_my_view">MyView</string>
     <string name="title_activity_sub_activity2">SD</string>
-    <string name="title_activity_sub_activity_smp">SubActivitySMP</string>
-    <string name="title_activity_sub_activity_sm">SubActivitySMA</string>
+    <string name="title_activity_sub_activity_smp">SMP</string>
+    <string name="title_activity_sub_activity_sm">SMA</string>
     <string name="title_activity_dynamic_matkul">DynamicMatkul</string>
+    <string name="title_activity_sd_slide">sdSlide</string>
+    <string-array name="tabs">
+        <item>SD 1</item>
+        <item>SD 2</item>
+        <item>SD 3</item>
+        <item>SD 4</item>
+        <item>SD 5</item>
+        <item>SD 6</item>
+    </string-array>
 
 </resources>

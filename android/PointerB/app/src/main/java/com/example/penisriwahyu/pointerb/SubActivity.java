@@ -1,5 +1,6 @@
 package com.example.penisriwahyu.pointerb;
 
+import android.graphics.Typeface;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 
 public class SubActivity extends ActionBarActivity {
@@ -22,6 +26,14 @@ public class SubActivity extends ActionBarActivity {
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        for (int i = 0; i<10;i++){
+            Button button = new Button(this);
+            button.setText("hahaha");
+            button.setTextSize(22);
+            LinearLayout layout = (LinearLayout) findViewById(R.id.cobaLayout);
+            layout.addView(button, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        }
     }
 
 

@@ -49,8 +49,8 @@
             android:label="@string/title_activity_sub_activity_sm" >
         </activity>
         <activity
-            android:name=".DynamicMatkul"
-            android:label="@string/title_activity_dynamic_matkul" >
+            android:name=".sdSlide"
+            android:label="@string/title_activity_sd_slide" >
         </activity>
     </application>
 

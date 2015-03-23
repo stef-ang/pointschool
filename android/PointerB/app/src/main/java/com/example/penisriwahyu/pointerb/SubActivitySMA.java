@@ -2,6 +2,7 @@ package com.example.penisriwahyu.pointerb;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -12,6 +13,8 @@ public class SubActivitySMA extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sub_activity_sma);
+        Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
     }
 
 

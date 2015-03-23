@@ -1,23 +1,22 @@
-<com.example.penisriwahyu.pointerb.MyLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.penisriwahyu.pointerb.SubActivity">
+    android:orientation="vertical"
+    android:id="@+id/cobaLayout"
+    tools:context="com.example.penisriwahyu.pointerb.a">
 
 
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar"/>
 
-    <com.example.penisriwahyu.pointerb.MyView
+    <TextView
+        android:layout_below="@id/app_bar"
+        android:text="@string/hello_world"
+        android:textColor="#000"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@android:color/white"
-        android:padding="16dp"
-        android:textColor="@android:color/black"
-        android:text="My View"
-        />
+        android:layout_height="wrap_content" />
 
-</com.example.penisriwahyu.pointerb.MyLayout>
+</LinearLayout>

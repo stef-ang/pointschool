@@ -24,54 +24,11 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity {
     private int ever =0;
     private Toolbar toolbar;
-    private DatabaseHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        if(db ==  null && ever == 0){
-            this.ever=1;
-            db = new DatabaseHandler(getApplicationContext());
-            new LongOperation(this).execute();
-        }
-
-        List<Bab> babs = db.getAllBab();
-        Log.d("Bab", "LIST");
-        for(Bab bab : babs){
-            Log.d("Bab", bab.toString());
-        }
-        List<Kelas> kelass = db.getAllKelas();
-        Log.d("kelas","LIST");
-        for(Kelas kelas : kelass){
-            Log.d("kelas", kelas.toString());
-        }
-        List<Mapel> mapels = db.getAllMapel();
-        Log.d("Mapel","LIST");
-        for(Mapel mapel : mapels){
-            Log.d("Mapel", mapel.toString());
-        }
-        List<Materi> materis = db.getAllMateri();
-        Log.d("Materi","LIST");
-        for(Materi materi : materis){
-            Log.d("Materi", materi.toString());
-        }
-        List<PaketSoal> paketsoals = db.getAllPaketSoal();
-        Log.d("PaketSoal","LIST");
-        for(PaketSoal paketsoal : paketsoals){
-            Log.d("Paketsoal", paketsoal.toString());
-        }
-        List<Soal> soals = db.getAllSoal();
-        Log.d("Soal","LIST");
-        for(Soal soal : soals){
-            Log.d("Soal", soal.toString());
-        }
-        List<Subbab> subbabs = db.getAllSubbab();
-        Log.d("Subbab","LIST");
-        for(Subbab subbab : subbabs){
-            Log.d("Subbab", subbab.toString());
-        }
 
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
