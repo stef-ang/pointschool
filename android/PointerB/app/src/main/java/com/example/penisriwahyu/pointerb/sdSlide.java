@@ -195,7 +195,7 @@ public class sdSlide extends ActionBarActivity {
             return layout;
         }
 
-        public void createBtn(String nama_bab, int id_bab){
+        public void createBtn(final String nama_bab, final int id_bab){
             Button button = new Button(getActivity());
             button.setText(nama_bab);
             button.setTextSize(18);
@@ -206,6 +206,19 @@ public class sdSlide extends ActionBarActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
             params.setMargins(10, 10, 10, 10);
+
+            button.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Intent i = new Intent(getActivity(), subBabView.class);
+                    Bundle arg = new Bundle();
+                    arg.putInt("id_bab",id_bab);
+                    arg.putString("nama_bab",nama_bab);
+                    i.putExtras(arg);
+                    startActivity(i);
+                }
+            });
+
             rel.addView(button, params);
         }
     }

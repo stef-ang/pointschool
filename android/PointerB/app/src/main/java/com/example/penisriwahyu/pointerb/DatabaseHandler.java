@@ -562,4 +562,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return babs;
     }
+
+    public List<Subbab> getSubbab(int id_bab) {
+        List<Subbab> subbabs = new ArrayList<Subbab>();
+        String selectQuery = "SELECT * FROM subbab WHERE subbab.id_bab = " + id_bab;
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Subbab subbab = new Subbab();
+                subbab.setIdSubbab(c.getInt(c.getColumnIndex(KEY_ID_SUBBAB)));
+                subbab.setIdBab(c.getInt(c.getColumnIndex(KEY_ID_BAB)));
+                subbab.setNomorSubbab(c.getInt(c.getColumnIndex(KEY_NOMOR_SUBBAB)));
+                subbab.setNamaSubbab(c.getString(c.getColumnIndex(KEY_NAMA_SUBBAB)));
+
+                // adding to kelas list
+                subbabs.add(subbab);
+            } while (c.moveToNext());
+        }
+
+        return subbabs;
+    }
 }
