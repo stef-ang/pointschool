@@ -34,7 +34,7 @@
             android:label="@string/title_activity_my_view" >
         </activity>
         <activity
-            android:name=".SubActivitySD"
+            android:name=".SubActivity2"
             android:label="@string/title_activity_sub_activity2" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -53,12 +53,8 @@
             android:label="@string/title_activity_sd_slide" >
         </activity>
         <activity
-            android:name=".smpSlide"
-            android:label="@string/title_activity_smp_slide" >
-        </activity>
-        <activity
-            android:name=".smaSlide"
-            android:label="@string/title_activity_sma_slide" >
+            android:name=".subBabView"
+            android:label="@string/title_activity_sub_bab_view" >
         </activity>
     </application>
 

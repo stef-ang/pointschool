@@ -36,7 +36,6 @@ public class subBabView extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         rel = (LinearLayout) findViewById(R.id.subBab);
-
         subBabView.this.setTitle(bund.getString("nama_bab"));
 
         DatabaseHandler db = new DatabaseHandler(this.getApplicationContext());

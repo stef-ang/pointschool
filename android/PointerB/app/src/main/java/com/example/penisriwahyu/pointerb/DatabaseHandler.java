@@ -531,4 +531,60 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return subbabs;
     }
+
+    public List<Bab> getBab(int nomor_kelas, String nama_mapel) {
+        List<Bab> babs = new ArrayList<Bab>();
+        String selectQuery =
+                "SELECT bab.* FROM bab, kelas, mapel WHERE " +
+                "mapel.id_mapel = bab.id_mapel " +
+                "AND kelas.id_kelas = bab.id_kelas " +
+                "AND kelas.nomor_kelas = " + nomor_kelas +
+                " AND mapel.nama_mapel = '" + nama_mapel+ "'";
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Bab bab = new Bab();
+                bab.setIdBab(c.getInt(c.getColumnIndex(KEY_ID_BAB)));
+                bab.setIdKelas(c.getInt(c.getColumnIndex(KEY_ID_KELAS)));
+                bab.setIdMapel(c.getInt(c.getColumnIndex(KEY_ID_MAPEL)));
+                bab.setNomorBab(c.getInt(c.getColumnIndex(KEY_NOMOR_BAB)));
+                bab.setNamaBab(c.getString(c.getColumnIndex(KEY_NAMA_BAB)));
+
+                // adding to kelas list
+                babs.add(bab);
+            } while (c.moveToNext());
+        }
+
+        return babs;
+    }
+
+    public List<Subbab> getSubbab(int id_bab) {
+        List<Subbab> subbabs = new ArrayList<Subbab>();
+        String selectQuery = "SELECT * FROM subbab WHERE subbab.id_bab = " + id_bab;
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Subbab subbab = new Subbab();
+                subbab.setIdSubbab(c.getInt(c.getColumnIndex(KEY_ID_SUBBAB)));
+                subbab.setIdBab(c.getInt(c.getColumnIndex(KEY_ID_BAB)));
+                subbab.setNomorSubbab(c.getInt(c.getColumnIndex(KEY_NOMOR_SUBBAB)));
+                subbab.setNamaSubbab(c.getString(c.getColumnIndex(KEY_NAMA_SUBBAB)));
+
+                // adding to kelas list
+                subbabs.add(subbab);
+            } while (c.moveToNext());
+        }
+
+        return subbabs;
+    }
 }

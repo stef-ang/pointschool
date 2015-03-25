@@ -25,17 +25,12 @@ public class MainActivity extends ActionBarActivity {
     private int ever =0;
     private Toolbar toolbar;
 
-    List<Bab> babs;
-    List<Mapel> mapels;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new LongOperation(this).execute();
-        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-
-
+        DatabaseHandler db = new DatabaseHandler(this.getApplicationContext());
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
