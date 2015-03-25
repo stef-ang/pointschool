@@ -33,7 +33,7 @@ public class  MainActivity extends ActionBarActivity {
             }
             DatabaseHandler db = new DatabaseHandler(getApplicationContext());
 
-           /* List<Bab> babs = db.getAllBab();
+            List<Bab> babs = db.getAllBab();
             Log.d("Bab","LIST");
             for(Bab bab : babs){
                 Log.d("Bab", bab.toString());
@@ -67,7 +67,7 @@ public class  MainActivity extends ActionBarActivity {
             Log.d("Subbab","LIST");
             for(Subbab subbab : subbabs){
                 Log.d("Subbab", subbab.toString());
-            }*/
+            }
             BrowserFragment firstFragment = new BrowserFragment();
 
             // In case this activity was started with special instructions from an
