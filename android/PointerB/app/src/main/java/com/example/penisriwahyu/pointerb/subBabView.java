@@ -84,7 +84,7 @@ public class subBabView extends ActionBarActivity {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(subBabView.this, subBabView.class);
+                Intent i = new Intent(subBabView.this, materiViewer.class);
                 Bundle arg = new Bundle();
                 arg.putInt("id_subbab",id_subbab);
                 arg.putString("nama_subbab",nama_subbab);

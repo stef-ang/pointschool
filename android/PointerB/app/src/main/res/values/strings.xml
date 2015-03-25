@@ -28,5 +28,6 @@
     </string-array>
 
     <string name="title_activity_sub_bab_view">subBabView</string>
+    <string name="title_activity_materi_viewer">materiViewer</string>
 
 </resources>
