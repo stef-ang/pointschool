@@ -29,40 +29,18 @@
         android:layout_margin="4dp"
         android:textColor="#000"
         android:background="@drawable/btn_state"
-        android:id="@+id/smp_mat"/>
+        android:id="@+id/sd_mat"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="4dp"
-        android:text="Biologi"
+        android:text="Ilmu Pengetahuan Alam"
         android:layout_weight="1"
         android:textColor="#000"
         android:background="@drawable/btn_state"
-        android:id="@+id/smp_biologi"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Fisika"
-        android:layout_weight="1"
-        android:textColor="#000"
-        android:background="@drawable/btn_state"
-        android:id="@+id/smp_fisika"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Kimia"
-        android:layout_weight="1"
-        android:textColor="#000"
-        android:background="@drawable/btn_state"
-        android:id="@+id/smp_kimia"/>
+        android:id="@+id/sd_ipa"/>
 
     <Button
         android:layout_width="match_parent"
@@ -73,7 +51,7 @@
         android:textColor="#000"
         android:layout_weight="1"
         android:background="@drawable/btn_state"
-        android:id="@+id/smp_ips"/>
+        android:id="@+id/sd_ips"/>
 
     <Button
         android:layout_width="match_parent"
@@ -84,7 +62,7 @@
         android:textColor="#000"
         android:layout_weight="1"
         android:background="@drawable/btn_state"
-        android:id="@+id/smp_bind"/>
+        android:id="@+id/sd_bind"/>
 
     <Button
         android:layout_width="match_parent"
@@ -95,6 +73,6 @@
         android:textColor="#000"
         android:layout_weight="1"
         android:background="@drawable/btn_state"
-        android:id="@+id/smp_bing"/>
+        android:id="@+id/sd_bing"/>
 
 </LinearLayout>

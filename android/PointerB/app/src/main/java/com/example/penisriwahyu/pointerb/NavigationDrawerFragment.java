@@ -1,30 +1,21 @@
 package com.example.penisriwahyu.pointerb;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
-import android.widget.Switch;
-import android.widget.Toast;
 
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,7 +146,7 @@ public class NavigationDrawerFragment extends Fragment implements PeniAdapter.Cl
                 mDrawerLayout.closeDrawer(containerView);
                 break;
             case 1:
-                startActivity(new Intent(getActivity(), SubActivity2.class));
+                startActivity(new Intent(getActivity(), SubActivitySD.class));
                 break;
             case 2:
                 FragmentTwo frag2 = new FragmentTwo();

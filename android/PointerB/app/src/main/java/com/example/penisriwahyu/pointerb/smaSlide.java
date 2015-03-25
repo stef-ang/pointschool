@@ -1,9 +1,7 @@
 package com.example.penisriwahyu.pointerb;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,25 +17,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.penisriwahyu.pointerb.Model.Bab;
-import com.example.penisriwahyu.pointerb.Model.Kelas;
 import com.example.penisriwahyu.pointerb.Model.Mapel;
-import com.example.penisriwahyu.pointerb.Model.Materi;
-import com.example.penisriwahyu.pointerb.Model.PaketSoal;
-import com.example.penisriwahyu.pointerb.Model.Soal;
-import com.example.penisriwahyu.pointerb.Model.Subbab;
 import com.example.penisriwahyu.pointerb.tabs.SlidingTabLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class sdSlide extends ActionBarActivity {
+public class smaSlide extends ActionBarActivity {
     private Toolbar toolbar;
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
@@ -48,35 +38,51 @@ public class sdSlide extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sd_slide);
+        setContentView(R.layout.activity_sma_slide);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar2);
         setSupportActionBar(toolbar);
 
-
         Intent intent = getIntent();
         Bundle bund = intent.getExtras();
+
         if(bund != null){
             this.number = bund.getInt("NoMapel");
             if(number == 0){
-                sdSlide.this.setTitle("Matematika SD");
+                smaSlide.this.setTitle("Matematika SMA");
                 this.id_mapel =0;
             }
             else if(number == 1){
-                sdSlide.this.setTitle("IPA SD");
+                smaSlide.this.setTitle("Biologi SMA");
                 this.id_mapel =1;
             }
             else if(number == 2){
-                sdSlide.this.setTitle("IPS SD");
+                smaSlide.this.setTitle("Fisika SMA");
                 this.id_mapel =2;
             }
             else if(number == 3){
-                sdSlide.this.setTitle("Bahasa Indonesia SD");
+                smaSlide.this.setTitle("Kimia SMA");
                 this.id_mapel =3;
             }
             else if(number == 4){
-                sdSlide.this.setTitle("Bahasa Inggris SD");
+                smaSlide.this.setTitle("Ekonomi SMA");
                 this.id_mapel = 4;
+            }
+            else if(number == 5){
+                smaSlide.this.setTitle("Sosiologi SMA");
+                this.id_mapel = 5;
+            }
+            else if(number == 6){
+                smaSlide.this.setTitle("Sosiologi SMA");
+                this.id_mapel = 6;
+            }
+            else if(number == 7){
+                smaSlide.this.setTitle("Bahasa Indonesia SMA");
+                this.id_mapel = 4;
+            }
+            else if(number == 8){
+                smaSlide.this.setTitle("Bahasa Inggris SMA");
+                this.id_mapel = 8;
             }
         }
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -89,12 +95,15 @@ public class sdSlide extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sd_slide, menu);
+        getMenuInflater().inflate(R.menu.menu_sma_slide, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -104,8 +113,7 @@ public class sdSlide extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    class MyPagerAdapter extends FragmentPagerAdapter{
+    class MyPagerAdapter extends FragmentPagerAdapter {
 
         String[] tabs;
         int id_mapel;
@@ -114,7 +122,7 @@ public class sdSlide extends ActionBarActivity {
             super(fm);
 
             this.id_mapel = id_mapel;
-            tabs=getResources().getStringArray(R.array.tabs);
+            tabs=getResources().getStringArray(R.array.tabsSMA);
         }
 
         @Override
@@ -176,7 +184,7 @@ public class sdSlide extends ActionBarActivity {
                 //looping button
                 for (int i = 0;i < babs.size();i++){
                     if (babs.get(i).getIdMapel() == idMapel && babs.get(i).getIdKelas() == 1) {
-                        Log.d("PENI PENI PENI", "-------------"+babs.get(i).getNamaBab());
+                        Log.d("PENI PENI PENI", "-------------" + babs.get(i).getNamaBab());
                         Button button = new Button(getActivity());
                         button.setText(babs.get(i).getNamaBab());
                         button.setTextSize(18);
@@ -219,7 +227,6 @@ public class sdSlide extends ActionBarActivity {
             else{
 
             }
-
 
             return layout;
         }

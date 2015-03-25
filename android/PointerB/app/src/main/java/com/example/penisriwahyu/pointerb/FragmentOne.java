@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 /**
@@ -30,7 +29,7 @@ public class FragmentOne extends Fragment {
         but.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(getActivity(), SubActivity2.class);
+                Intent i = new Intent(getActivity(), SubActivitySD.class);
                 startActivity(i);
             }
         });
