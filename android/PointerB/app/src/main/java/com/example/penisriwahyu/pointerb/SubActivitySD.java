@@ -1,6 +1,7 @@
 package com.example.penisriwahyu.pointerb;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,93 +11,77 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class SubActivitySMP extends ActionBarActivity {
+public class SubActivitySD extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sub_activity_smp);
+        setContentView(R.layout.sub_activity2);
+        //halaman sd
         Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        Button btnMat  = (Button) findViewById(R.id.smp_mat);
-        Button btnBio  = (Button) findViewById(R.id.smp_biologi);
-        Button btnFis  = (Button) findViewById(R.id.smp_fisika);
-        Button btnKim  = (Button) findViewById(R.id.smp_kimia);
-        Button btnIps  = (Button) findViewById(R.id.smp_ips);
-        Button btnBind = (Button) findViewById(R.id.smp_bind);
-        Button btnBing = (Button) findViewById(R.id.smp_bing);
-
+        Button btnMat = (Button) findViewById(R.id.sd_mat);
         btnMat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SubActivitySMP.this, smpSlide.class);
+                Intent i = new Intent(SubActivitySD.this, sdSlide.class);
                 Bundle arg = new Bundle();
                 arg.putInt("NoMapel",0);
                 i.putExtras(arg);
                 startActivity(i);
             }
         });
-        btnBio.setOnClickListener(new View.OnClickListener() {
+
+        Button btnIpa = (Button) findViewById(R.id.sd_ipa);
+        btnIpa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SubActivitySMP.this, smpSlide.class);
+                Intent i = new Intent(SubActivitySD.this, sdSlide.class);
                 Bundle arg = new Bundle();
                 arg.putInt("NoMapel",1);
                 i.putExtras(arg);
                 startActivity(i);
             }
         });
-        btnFis.setOnClickListener(new View.OnClickListener() {
+
+        Button btnIps = (Button) findViewById(R.id.sd_ips);
+        btnIps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SubActivitySMP.this, smpSlide.class);
+                Intent i = new Intent(SubActivitySD.this, sdSlide.class);
                 Bundle arg = new Bundle();
                 arg.putInt("NoMapel",2);
                 i.putExtras(arg);
                 startActivity(i);
             }
         });
-        btnKim.setOnClickListener(new View.OnClickListener() {
+
+        Button btnBi = (Button) findViewById(R.id.sd_bind);
+        btnBi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SubActivitySMP.this, smpSlide.class);
+                Intent i = new Intent(SubActivitySD.this, sdSlide.class);
                 Bundle arg = new Bundle();
                 arg.putInt("NoMapel",3);
                 i.putExtras(arg);
                 startActivity(i);
             }
         });
-        btnIps.setOnClickListener(new View.OnClickListener() {
+
+        Button btnIng = (Button) findViewById(R.id.sd_bing);
+        btnIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SubActivitySMP.this, smpSlide.class);
+                Intent i = new Intent(SubActivitySD.this, sdSlide.class);
                 Bundle arg = new Bundle();
                 arg.putInt("NoMapel",4);
                 i.putExtras(arg);
                 startActivity(i);
             }
         });
-        btnBind.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SubActivitySMP.this, smpSlide.class);
-                Bundle arg = new Bundle();
-                arg.putInt("NoMapel",5);
-                i.putExtras(arg);
-                startActivity(i);
-            }
-        });
-        btnBing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SubActivitySMP.this, smpSlide.class);
-                Bundle arg = new Bundle();
-                arg.putInt("NoMapel",6);
-                i.putExtras(arg);
-                startActivity(i);
-            }
-        });
+
+
 
     }
 
@@ -104,7 +89,7 @@ public class SubActivitySMP extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.men_sub_activity_smp, menu);
+        getMenuInflater().inflate(R.menu.menu_sub_activity2, menu);
         return true;
     }
 
@@ -118,6 +103,9 @@ public class SubActivitySMP extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.home){
+            NavUtils.navigateUpFromSameTask(this);
         }
 
         return super.onOptionsItemSelected(item);

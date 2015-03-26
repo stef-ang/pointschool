@@ -37,6 +37,6 @@ public class FragmentTwo extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         Toast.makeText(this.getActivity(), "Button is clicked fragment 2!", Toast.LENGTH_LONG).show();
-        //startActivity(new Intent(getActivity(), SubActivity2.class));
+        //startActivity(new Intent(getActivity(), SubActivitySD.class));
     }
 }
