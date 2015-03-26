@@ -587,29 +587,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return subbabs;
     }
-
-    public List<Materi> getMateri(int id_subbab) {
-        List<Materi> materis = new ArrayList<Materi>();
-        String selectQuery = "SELECT * FROM materi WHERE materi.id_subbab = " + id_subbab;
-
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                Materi materi = new Materi();
-                materi.setIdMateri(c.getInt(c.getColumnIndex(KEY_ID_MATERI)));
-                materi.setIdSubbab(c.getInt(c.getColumnIndex(KEY_ID_SUBBAB)));
-                materi.setNomorMateri(c.getInt(c.getColumnIndex(KEY_NOMOR_MATERI)));
-                materi.setIdFileMateri(c.getString(c.getColumnIndex(KEY_ID_FILE_MATERI)));
-                materi.setCatatanMateri(c.getString(c.getColumnIndex(KEY_CATATAN_MATERI)));
-                // adding to materi list
-                materis.add(materi);
-            } while (c.moveToNext());
-        }
-
-        return materis;
-    }
 }
