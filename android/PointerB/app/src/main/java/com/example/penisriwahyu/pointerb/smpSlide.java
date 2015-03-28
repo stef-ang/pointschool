@@ -28,7 +28,6 @@ import java.util.List;
 
 
 public class smpSlide extends ActionBarActivity {
-
     private Toolbar toolbar;
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
@@ -72,6 +71,7 @@ public class smpSlide extends ActionBarActivity {
         mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), number));
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setViewPager(mPager);
+
     }
 
 
@@ -93,6 +93,10 @@ public class smpSlide extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if( id == R.id.home){
+            startActivity(new Intent(this, MainActivity.class));
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -149,70 +153,87 @@ public class smpSlide extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
             Bundle bundle = getArguments();
-            boolean ever = false;
-            DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
-            babs = db.getAllBab();
-            mapels = db.getAllMapel();
 
             layout =inflater.inflate(R.layout.fragment_my,(ViewGroup) this.getView(), true);
             rel = (LinearLayout) layout.findViewById(R.id.linearLayout);
-            int idMapel = 0;
+
             rel.setPadding(10,10,10,10);
-
-            if(bundle.getInt("id_mapel") == 0 && bundle.getInt("position")==0 ){
-                for (int i = 0; i < mapels.size();i++){
-                    if (mapels.get(i).getNamaMapel().equals("Matematika")){
-                        idMapel = mapels.get(i).getIdMapel();
-                    }
-                }
-                //looping button
+            if(bundle.getInt("id_mapel") == 0){
+                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+                babs = db.getBab(bundle.getInt("position") + 7 ,"Matematika");
                 for (int i = 0;i < babs.size();i++){
-                    if (babs.get(i).getIdMapel() == idMapel && babs.get(i).getIdKelas() == 1) {
-                        Log.d("PENI PENI PENI", "-------------" + babs.get(i).getNamaBab());
-                        Button button = new Button(getActivity());
-                        button.setText(babs.get(i).getNamaBab());
-                        button.setTextSize(18);
-                        button.setBackground(getResources().getDrawable(R.drawable.btn_state));
-                        button.setTextColor(Color.parseColor("#000000"));
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT
-                        );
-                        params.setMargins(10, 10, 10, 10);
-
-
-
-                        rel.addView(button, params);
-                    }
+                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
                 }
             }
-            else if(bundle.getInt("id_mapel") == 0 && bundle.getInt("position")==1 ){
-                for (int i = 0; i < mapels.size();i++){
-                    if (mapels.get(i).getNamaMapel().equals("Matematika")){
-                        idMapel = mapels.get(i).getIdMapel();
-                    }
-                }
+            else if(bundle.getInt("id_mapel") == 1){
+                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+                babs = db.getBab(bundle.getInt("position") + 7,"Biologi");
                 for (int i = 0;i < babs.size();i++){
-                    if (babs.get(i).getIdMapel() == idMapel && babs.get(i).getIdKelas() == 2) {
-                        Button button = new Button(getActivity());
-                        button.setText(babs.get(i).getNamaBab());
-                        button.setTextSize(18);
-                        button.setBackground(getResources().getDrawable(R.drawable.btn_state));
-                        button.setTextColor(Color.parseColor("#000000"));
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.MATCH_PARENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT
-                        );
-                        params.setMargins(10, 10, 10, 10);
-                        rel.addView(button, params);
-                    }
+                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
                 }
             }
-            else{
-
+            else if(bundle.getInt("id_mapel") == 2){
+                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+                babs = db.getBab(bundle.getInt("position") + 7,"Fisika");
+                for (int i = 0;i < babs.size();i++){
+                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
+                }
             }
-
+            else if(bundle.getInt("id_mapel") == 3){
+                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+                babs = db.getBab(bundle.getInt("position") + 7,"Kimia");
+                for (int i = 0;i < babs.size();i++){
+                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
+                }
+            }
+            else if(bundle.getInt("id_mapel") == 4){
+                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+                babs = db.getBab(bundle.getInt("position") + 7,"Ilmu Pengetahuan Sosial");
+                for (int i = 0;i < babs.size();i++){
+                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
+                }
+            }
+            else if(bundle.getInt("id_mapel") == 5){
+                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+                babs = db.getBab(bundle.getInt("position") + 7,"Bahasa Indonesia");
+                for (int i = 0;i < babs.size();i++){
+                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
+                }
+            }
+            else if(bundle.getInt("id_mapel") == 6){
+                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+                babs = db.getBab(bundle.getInt("position") + 7,"Bahasa Inggris");
+                for (int i = 0;i < babs.size();i++){
+                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
+                }
+            }
             return layout;
+        }
+        public void createBtn(final String nama_bab, final int id_bab){
+            Button button = new Button(getActivity());
+            button.setText(nama_bab);
+            button.setTextSize(18);
+            button.setBackground(getResources().getDrawable(R.drawable.btn_state));
+            button.setTextColor(Color.parseColor("#000000"));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.setMargins(10, 10, 10, 10);
+
+            button.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Intent i = new Intent(getActivity(), subBabView.class);
+                    Bundle arg = new Bundle();
+                    arg.putInt("id_bab",id_bab);
+                    arg.putString("nama_bab",nama_bab);
+                    i.putExtras(arg);
+                    startActivity(i);
+                }
+            });
+
+            rel.addView(button, params);
         }
     }
 }

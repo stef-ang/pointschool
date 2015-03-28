@@ -12,6 +12,7 @@ import android.widget.Button;
 
 public class SubActivitySMP extends ActionBarActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

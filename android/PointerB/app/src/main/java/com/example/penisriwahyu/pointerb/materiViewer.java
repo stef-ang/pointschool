@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.penisriwahyu.pointerb.Model.Materi;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -41,11 +42,12 @@ public class materiViewer extends ActionBarActivity {
     // Progress Dialog
     private ProgressDialog pDialog;
     ImageView my_image;
+    String path;
     // Progress dialog type (0 - for Horizontal progress bar)
     public static final int progress_bar_type = 0;
 
     // File url to download
-    private static String file_url = "http://128.199.140.247/pointschool/upload/1/";
+    private static String file_url = "http://128.199.140.247/pointschool/";
 
 
     @Override
@@ -60,15 +62,30 @@ public class materiViewer extends ActionBarActivity {
         setSupportActionBar(toolbar);
         rel = (LinearLayout) findViewById(R.id.materi);
 
+        File materiDirectory = new File("/sdcard/PointerSchool/");
+        if (!materiDirectory.exists())
+            materiDirectory.mkdirs();
+        materiDirectory = new File("/sdcard/PointerSchool/" + bund.getInt("id_subbab"));
+        if (!materiDirectory.exists())
+            materiDirectory.mkdirs();
+
+
         materiViewer.this.setTitle(bund.getString("nama_subbab"));
         DatabaseHandler db = new DatabaseHandler(this.getApplicationContext());
         materis = db.getMateri(bund.getInt("id_subbab"));
-        for (int i = 0;i < 2;i++){
-            /*TextView baru = new TextView(this);
-            baru.setText(materis.get(i).getIdFileMateri());
-            rel.addView(baru);*/
-            new DownloadFileFromURL().execute(file_url + file_name[i], file_name[i]);
+        for (int i = 0;i < materis.size();i++){
+            //Log.d("HAHA-------------------", materis.get(i).getIdFileMateri());
+
+
+            String string = materis.get(i).getIdFileMateri();
+            String[] parts = string.split("/");
+            String filename = parts[2];
+            //Log.d("HAHAHAHA------------------", filename);
+            new DownloadFileFromURL().execute(file_url+string, string, filename);
+
         }
+
+
     }
 
     @Override
@@ -119,7 +136,10 @@ public class materiViewer extends ActionBarActivity {
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
 
                 // Output stream
-                OutputStream output = new FileOutputStream("/sdcard/" + f_url[1]);
+                String string = f_url[1];
+                String[] parts = string.split("/");
+                String path = parts[1];
+                OutputStream output = new FileOutputStream("/sdcard/PointerSchool/" + path + "/" + f_url[2]);
 
                 byte data[] = new byte[1024];
 
@@ -168,7 +188,9 @@ public class materiViewer extends ActionBarActivity {
 
             // Displaying downloaded image into image view
             // Reading image path from sdcard
-            String imagePath = Environment.getExternalStorageDirectory().toString() + "/" + file_name_dest;
+            String string = file_name_dest;
+            String[] parts = string.split("/");
+            String imagePath = Environment.getExternalStorageDirectory().toString() + "/PointerSchool/"+ parts[1]+ "/" +parts[2];
             Log.d("INI imagePathNYA", imagePath);
             // setting downloaded into image view
             my_image = new ImageView(materiViewer.this);

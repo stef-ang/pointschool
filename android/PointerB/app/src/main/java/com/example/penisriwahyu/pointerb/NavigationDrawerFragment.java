@@ -146,7 +146,12 @@ public class NavigationDrawerFragment extends Fragment implements PeniAdapter.Cl
                 mDrawerLayout.closeDrawer(containerView);
                 break;
             case 1:
-                startActivity(new Intent(getActivity(), SubActivitySD.class));
+                FragmentThree frag3 = new FragmentThree();
+                fr.replace(R.id.fragment_ku,frag3);
+                fr.addToBackStack(null);
+                fr.commit();
+                getActivity().setTitle("Profile");
+                mDrawerLayout.closeDrawer(containerView);
                 break;
             case 2:
                 FragmentTwo frag2 = new FragmentTwo();

@@ -5,17 +5,10 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.example.penisriwahyu.pointerb.Model.Bab;
-import com.example.penisriwahyu.pointerb.Model.Kelas;
-import com.example.penisriwahyu.pointerb.Model.Mapel;
-
-import java.util.List;
 
 
 public class SubActivity2 extends ActionBarActivity {
@@ -23,7 +16,7 @@ public class SubActivity2 extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sub_activity2);
+        setContentView(R.layout.sub_activity_sd);
         //halaman sd
         Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);

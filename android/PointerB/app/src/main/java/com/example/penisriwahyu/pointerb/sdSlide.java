@@ -97,6 +97,9 @@ public class sdSlide extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if( id == R.id.home){
+            startActivity(new Intent(this, MainActivity.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -110,7 +113,7 @@ public class sdSlide extends ActionBarActivity {
             super(fm);
 
             this.id_mapel = id_mapel;
-            tabs=getResources().getStringArray(R.array.tabs);
+            tabs=getResources().getStringArray(R.array.tabsSD);
         }
 
         @Override

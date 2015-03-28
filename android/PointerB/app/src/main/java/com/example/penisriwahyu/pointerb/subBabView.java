@@ -41,7 +41,7 @@ public class subBabView extends ActionBarActivity {
         DatabaseHandler db = new DatabaseHandler(this.getApplicationContext());
         subbabs = db.getSubbab(bund.getInt("id_bab"));
         for (int i = 0;i < subbabs.size();i++){
-            createBtn(subbabs.get(i).getNamaSubbab(),subbabs.get(i).getIdBab());
+            createBtn(subbabs.get(i).getNamaSubbab(),subbabs.get(i).getIdSubbab());
         }
 
     }

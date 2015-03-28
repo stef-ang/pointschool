@@ -4,4 +4,11 @@
     tools:context="com.example.penisriwahyu.pointerb.smpSlide">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/home"
+        android:title="@string/next"
+        android:orderInCategory="200"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="always"/>
+
 </menu>

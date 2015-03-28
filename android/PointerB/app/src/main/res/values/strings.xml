@@ -18,7 +18,7 @@
     <string name="title_activity_dynamic_matkul">DynamicMatkul</string>
     <string name="title_activity_sd_slide">sdSlide</string>
 
-    <string-array name="tabs">
+    <string-array name="tabsSD">
         <item>SD 1</item>
         <item>SD 2</item>
         <item>SD 3</item>
@@ -38,6 +38,8 @@
     </string-array>
 
     <string name="title_activity_sub_bab_view">subBabView</string>
-    <string name="title_activity_sma_slide">smaSlide</string>
+    <string name="title_activity_materi_viewer">materiViewer</string>
     <string name="title_activity_smp_slide">smpSlide</string>
+    <string name="title_activity_sma_slide">smaSlide</string>
+
 </resources>

@@ -29,8 +29,7 @@ public class FragmentOne extends Fragment {
         but.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(getActivity(), SubActivitySD.class);
-                startActivity(i);
+                startActivity(new Intent(getActivity(), SubActivity2.class));
             }
         });
 
