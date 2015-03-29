@@ -1,0 +1,8 @@
+tools
+- dev tools		: Android studio (Android), XAMPP (Web)
+- desainer db		: StarUML, Power designer
+- DBMS			: SQLite (android), MySQL (Web)
+- Text Editor (web)	: Sublime Text 2
+- Text Editor (document): Micrososft Word 
+- Timeline Editor	: Microsoft Open Project
+- picture desainer 	: Corel Draw, Photoshop
