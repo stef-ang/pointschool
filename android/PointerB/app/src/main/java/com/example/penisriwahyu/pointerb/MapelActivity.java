@@ -19,12 +19,13 @@ import java.util.List;
 
 public class MapelActivity extends ActionBarActivity {
     private LinearLayout layout;
+    private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapel);
-        Bundle bundle = getIntent().getExtras();
-        String title = bundle.getString("kelas");
+        bundle = getIntent().getExtras();
+        String title = bundle.getString("nama_kelas");
         this.setTitle(title);
         Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -43,6 +44,8 @@ public class MapelActivity extends ActionBarActivity {
         Button button = new Button(this);
         button.setText(nama_mapel);
         button.setTextSize(18);
+        button.setTag(R.id.key_1, id_mapel);
+        button.setTag(R.id.key_2,nama_mapel);
         button.setBackground(getResources().getDrawable(R.drawable.btn_state));
         button.setTextColor(Color.parseColor("#000000"));
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -55,11 +58,11 @@ public class MapelActivity extends ActionBarActivity {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(MapelActivity.this, subBabView.class);
-                Bundle arg = new Bundle();
-                arg.putInt("id_mapel",id_mapel);
-                arg.putString("nama_mapel",nama_mapel);
-                i.putExtras(arg);
+                Intent i = new Intent(MapelActivity.this, BabActivity.class);
+                bundle.putInt("id_mapel", Integer.parseInt(v.getTag(R.id.key_1).toString()));
+                bundle.putString("nama_mapel",v.getTag(R.id.key_2).toString());
+
+                i.putExtras(bundle);
                 startActivity(i);
             }
         });
@@ -69,7 +72,7 @@ public class MapelActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sub_activity2, menu);
+        getMenuInflater().inflate(R.menu.menu_mapel_activity, menu);
         return true;
     }
 

@@ -26,35 +26,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity
-            android:name=".MyLayout"
-            android:label="@string/title_activity_my_layout" >
-        </activity>
-        <activity
-            android:name=".MyView"
-            android:label="@string/title_activity_my_view" >
-        </activity>
        <activity
              android:name=".MapelActivity">
         </activity>
         <activity
-            android:name=".SubActivity2"
-            android:label="@string/title_activity_sub_activity2" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name=".SubActivitySMP"
-            android:label="@string/title_activity_sub_activity_smp" >
-        </activity>
-        <activity
-            android:name=".SubActivitySMA"
-            android:label="@string/title_activity_sub_activity_sm" >
-        </activity>
-        <activity
-            android:name=".sdSlide"
-            android:label="@string/title_activity_sd_slide" >
+            android:name=".BabActivity">
         </activity>
         <activity
             android:name=".subBabView"
@@ -63,14 +39,6 @@
         <activity
             android:name=".materiViewer"
             android:label="@string/title_activity_materi_viewer" >
-        </activity>
-        <activity
-            android:name=".smpSlide"
-            android:label="@string/title_activity_smp_slide" >
-        </activity>
-        <activity
-            android:name=".smaSlide"
-            android:label="@string/title_activity_sma_slide" >
         </activity>
     </application>
 

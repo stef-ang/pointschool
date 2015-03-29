@@ -31,7 +31,8 @@ public class FragmentOne extends Fragment {
             public void onClick(View v){
                 Intent intent = new Intent(getActivity(),MapelActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("kelas","Sekolah Dasar");
+                bundle.putString("nama_kelas","Sekolah Dasar");
+                bundle.putString("kelas","SD");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -43,7 +44,8 @@ public class FragmentOne extends Fragment {
             public void onClick(View v){
                 Intent intent = new Intent(getActivity(),MapelActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("kelas","Sekolah Menengah Pertama");
+                bundle.putString("nama_kelas","Sekolah Menengah Pertama");
+                bundle.putString("kelas","SMP");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -54,7 +56,8 @@ public class FragmentOne extends Fragment {
             public void onClick(View v){
                 Intent intent = new Intent(getActivity(),MapelActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("kelas","Sekolah Menengah Atas");
+                bundle.putString("nama_kelas","Sekolah Menengah Atas");
+                bundle.putString("kelas","SMA");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
