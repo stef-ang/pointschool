@@ -153,7 +153,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + " FOREIGN KEY(" + KEY_ID_PAKET_SOAL + ") REFERENCES " + TABLE_PAKET_SOAL + "(" + KEY_ID_PAKET_SOAL + "))";
 
     private static DatabaseHandler instance;
-
+    private  Context context;
     public static synchronized DatabaseHandler getHelper(Context context)
     {
         if(instance == null)
@@ -165,6 +165,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -189,6 +190,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_MATERI);
         db.execSQL(CREATE_TABLE_PAKET_SOAL);
         db.execSQL(CREATE_TABLE_SOAL);
+        new LongOperation(context).execute();
+
     }
 
     // Upgrading database
@@ -335,7 +338,36 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return mapels;
     }
+    /*
+       * getting mapel by kelas
+       * */
+    public List<Mapel> getMapelByKelas(String kelas) {
+        List<Mapel> mapels = new ArrayList<Mapel>();
+        String selectQuery = "SELECT DISTINCT " + TABLE_MAPEL + "." + KEY_ID_MAPEL + "," + TABLE_MAPEL + "." + KEY_NAMA_MAPEL +
+                " FROM " + TABLE_MAPEL + "," + TABLE_KELAS + ", " + TABLE_BAB +
+                " WHERE " + TABLE_BAB +"."+KEY_ID_KELAS + "=" +TABLE_KELAS + "." + KEY_ID_KELAS +
+                " AND " + TABLE_BAB+"."+KEY_ID_MAPEL+"="+TABLE_MAPEL+"."+ KEY_ID_MAPEL +
+                " AND " + TABLE_KELAS+"."+KEY_NAMA_KELAS+"='"+kelas+"'";
 
+        Log.e("GET MAPELBYKELAS", selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Mapel mapel = new Mapel();
+                mapel.setIdMapel(c.getInt(c.getColumnIndex(KEY_ID_MAPEL)));
+                mapel.setNamaMapel(c.getString(c.getColumnIndex(KEY_NAMA_MAPEL)));
+
+                // adding to mapel list
+                mapels.add(mapel);
+            } while (c.moveToNext());
+        }
+
+        return mapels;
+    }
     /*
 * Creating a Materi
 */

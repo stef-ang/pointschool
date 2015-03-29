@@ -34,6 +34,9 @@
             android:name=".MyView"
             android:label="@string/title_activity_my_view" >
         </activity>
+       <activity
+             android:name=".MapelActivity">
+        </activity>
         <activity
             android:name=".SubActivity2"
             android:label="@string/title_activity_sub_activity2" >

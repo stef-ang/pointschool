@@ -29,7 +29,11 @@ public class FragmentOne extends Fragment {
         but.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(getActivity(), SubActivity2.class));
+                Intent intent = new Intent(getActivity(),MapelActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("kelas","Sekolah Dasar");
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
@@ -37,15 +41,22 @@ public class FragmentOne extends Fragment {
         butsmp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(getActivity(), SubActivitySMP.class));
+                Intent intent = new Intent(getActivity(),MapelActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("kelas","Sekolah Menengah Pertama");
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
-
         Button butsma = (Button) view.findViewById(R.id.sma);
         butsma.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(getActivity(), SubActivitySMA.class));
+                Intent intent = new Intent(getActivity(),MapelActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("kelas","Sekolah Menengah Atas");
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
