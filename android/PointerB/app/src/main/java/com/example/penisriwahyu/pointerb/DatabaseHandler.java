@@ -190,7 +190,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_MATERI);
         db.execSQL(CREATE_TABLE_PAKET_SOAL);
         db.execSQL(CREATE_TABLE_SOAL);
-        new LongOperation(context).execute();
 
     }
 
@@ -278,6 +277,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String selectQuery = "SELECT  * FROM " + TABLE_KELAS;
 
         Log.e("GET KELASS", selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                Kelas kelas = new Kelas();
+                kelas.setIdKelas(c.getInt(c.getColumnIndex(KEY_ID_KELAS)));
+                kelas.setNomorKelas(c.getInt(c.getColumnIndex(KEY_NOMOR_KELAS)));
+                kelas.setNamaKelas(c.getString(c.getColumnIndex(KEY_NAMA_KELAS)));
+
+                // adding to kelas list
+                kelass.add(kelas);
+            } while (c.moveToNext());
+        }
+
+        return kelass;
+    }
+
+    /*
+   * getting  kelas
+   * */
+    public List<Kelas> getKelas(String nama_kelas) {
+        List<Kelas> kelass = new ArrayList<Kelas>();
+        String selectQuery = "SELECT  * FROM " + TABLE_KELAS + " WHERE " + KEY_NAMA_KELAS + "='" + nama_kelas + "'";
+
+        Log.e("GET KELAS BY Kelas", selectQuery);
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);

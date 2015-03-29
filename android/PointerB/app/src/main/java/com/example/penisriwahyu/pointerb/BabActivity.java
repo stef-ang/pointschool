@@ -1,9 +1,8 @@
 package com.example.penisriwahyu.pointerb;
 
-import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,9 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.penisriwahyu.pointerb.Model.Bab;
@@ -33,50 +30,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class sdSlide extends ActionBarActivity {
+public class BabActivity extends ActionBarActivity {
     private Toolbar toolbar;
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
-    private int number;
-    public int id_kelas = 1;
-    public int id_mapel = 0;
+    private Bundle bundle;
+    private String kelas;
+    private String nama_mapel;
+    private int id_mapel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sd_slide);
+        setContentView(R.layout.activity_bab);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar2);
         setSupportActionBar(toolbar);
 
 
-        Intent intent = getIntent();
-        Bundle bund = intent.getExtras();
-        if(bund != null){
-            this.number = bund.getInt("NoMapel");
-            if(number == 0){
-                sdSlide.this.setTitle("Matematika SD");
-                this.id_mapel =0;
-            }
-            else if(number == 1){
-                sdSlide.this.setTitle("IPA SD");
-                this.id_mapel =1;
-            }
-            else if(number == 2){
-                sdSlide.this.setTitle("IPS SD");
-                this.id_mapel =2;
-            }
-            else if(number == 3){
-                sdSlide.this.setTitle("Bahasa Indonesia SD");
-                this.id_mapel =3;
-            }
-            else if(number == 4){
-                sdSlide.this.setTitle("Bahasa Inggris SD");
-                this.id_mapel = 4;
-            }
-        }
+        bundle = getIntent().getExtras();
+        id_mapel = bundle.getInt("id_mapel");
+        nama_mapel = bundle.getString("nama_mapel");
+        kelas = bundle.getString("kelas");
+        BabActivity.this.setTitle(nama_mapel + " " + kelas);
+
         mPager = (ViewPager) findViewById(R.id.pager);
-        mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), number));
+        mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager(), bundle,this));
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setViewPager(mPager);
     }
@@ -85,7 +64,7 @@ public class sdSlide extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sd_slide, menu);
+        getMenuInflater().inflate(R.menu.menu_bab_activity, menu);
         return true;
     }
 
@@ -108,17 +87,24 @@ public class sdSlide extends ActionBarActivity {
 
         String[] tabs;
         int id_mapel;
-
-        public MyPagerAdapter(FragmentManager fm, int id_mapel) {
+        Bundle bundle;
+        public MyPagerAdapter(FragmentManager fm, Bundle bundle, Context context) {
             super(fm);
-
-            this.id_mapel = id_mapel;
-            tabs=getResources().getStringArray(R.array.tabsSD);
+            DatabaseHandler db = new DatabaseHandler(context);
+            this.bundle = bundle;
+            List <Kelas> kelass = db.getKelas(bundle.getString("nama_kelas"));
+            this.id_mapel = bundle.getInt("id_mapel");
+            List<String> tabsList= new ArrayList<String>();
+            for(int i=1;i<=kelass.size();i++){
+                tabsList.add(bundle.getString("kelas") + " "+ i);
+            }
+            tabs = tabsList.toArray(new String[tabsList.size()]);
         }
 
         @Override
         public Fragment getItem(int position) {
-            MyFragment myFragment = MyFragment.getInstance(position, this.id_mapel);
+            bundle.putInt("position",position);
+            MyFragment myFragment = MyFragment.getInstance(bundle);
             return myFragment;
         }
 
@@ -129,7 +115,7 @@ public class sdSlide extends ActionBarActivity {
 
         @Override
         public int getCount() {
-            return 6;
+            return tabs.length;
         }
     }
 
@@ -143,58 +129,36 @@ public class sdSlide extends ActionBarActivity {
         List<Bab> babs;
         List<Mapel> mapels;
 
-        public static MyFragment getInstance(int position, int mapel){
+        public static MyFragment getInstance(Bundle b){
             MyFragment myFragment= new MyFragment();
-            Bundle args = new Bundle();
-            args.putInt("position", position);
-            args.putInt("id_mapel",mapel);
-            myFragment.setArguments(args);
+            Bundle bundle = new Bundle(b);
+            myFragment.setArguments(bundle);
             return myFragment;
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
             Bundle bundle = getArguments();
-
+            int offset;
             layout =inflater.inflate(R.layout.fragment_my,(ViewGroup) this.getView(), true);
             rel = (LinearLayout) layout.findViewById(R.id.linearLayout);
 
             rel.setPadding(10,10,10,10);
-            if(bundle.getInt("id_mapel") == 0){
-                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
-                babs = db.getBab(bundle.getInt("position") + 1 ,"Matematika");
-                for (int i = 0;i < babs.size();i++){
-                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
-                }
+            if(bundle.getString("kelas").equals("SD")){
+                offset=1;
             }
-            else if(bundle.getInt("id_mapel") == 1){
-                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
-                babs = db.getBab(bundle.getInt("position") + 1,"Ilmu Pengetahuan Alam");
-                for (int i = 0;i < babs.size();i++){
-                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
-                }
+            else if(bundle.getString("kelas").equals("SMP")){
+                offset=7;
             }
-            else if(bundle.getInt("id_mapel") == 2){
-                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
-                babs = db.getBab(bundle.getInt("position") + 1,"Ilmu Pengetahuan Sosial");
-                for (int i = 0;i < babs.size();i++){
-                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
-                }
+            else offset= 10;
+            DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
+
+            Log.d("Fragment Bab",bundle.getInt("position") + " " + bundle.get("nama_mapel"));
+            babs = db.getBab(bundle.getInt("position") +offset ,bundle.getString("nama_mapel"));
+            for (int i = 0;i < babs.size();i++){
+                createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
             }
-            else if(bundle.getInt("id_mapel") == 3){
-                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
-                babs = db.getBab(bundle.getInt("position") + 1,"Bahasa Indonesia");
-                for (int i = 0;i < babs.size();i++){
-                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
-                }
-            }
-            else if(bundle.getInt("id_mapel") == 4){
-                DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
-                babs = db.getBab(bundle.getInt("position") + 1,"Bahasa Inggris");
-                for (int i = 0;i < babs.size();i++){
-                    createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
-                }
-            }
+
             return layout;
         }
 

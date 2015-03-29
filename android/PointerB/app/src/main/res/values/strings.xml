@@ -41,5 +41,6 @@
     <string name="title_activity_materi_viewer">materiViewer</string>
     <string name="title_activity_smp_slide">smpSlide</string>
     <string name="title_activity_sma_slide">smaSlide</string>
-
+    <item type="id" name="key_1"/>
+    <item type="id" name="key_2"/>
 </resources>
