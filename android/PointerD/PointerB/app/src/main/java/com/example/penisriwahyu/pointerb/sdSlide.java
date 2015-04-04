@@ -1,9 +1,7 @@
 package com.example.penisriwahyu.pointerb;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,24 +10,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.penisriwahyu.pointerb.Model.Bab;
-import com.example.penisriwahyu.pointerb.Model.Kelas;
 import com.example.penisriwahyu.pointerb.Model.Mapel;
 import com.example.penisriwahyu.pointerb.tabs.SlidingTabLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -199,7 +192,7 @@ public class sdSlide extends ActionBarActivity {
             Button button = new Button(getActivity());
             button.setText(nama_bab);
             button.setTextSize(18);
-            button.setBackground(getResources().getDrawable(R.drawable.btn_state));
+            button.setBackground(getResources().getDrawable(R.drawable.btn_state_sd));
             button.setTextColor(Color.parseColor("#000000"));
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,

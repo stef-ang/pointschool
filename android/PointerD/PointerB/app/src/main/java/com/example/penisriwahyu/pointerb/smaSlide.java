@@ -190,7 +190,7 @@ public class smaSlide extends ActionBarActivity {
                         Button button = new Button(getActivity());
                         button.setText(babs.get(i).getNamaBab());
                         button.setTextSize(18);
-                        button.setBackground(getResources().getDrawable(R.drawable.btn_state));
+                        button.setBackground(getResources().getDrawable(R.drawable.btn_state_sd));
                         button.setTextColor(Color.parseColor("#000000"));
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -215,7 +215,7 @@ public class smaSlide extends ActionBarActivity {
                         Button button = new Button(getActivity());
                         button.setText(babs.get(i).getNamaBab());
                         button.setTextSize(18);
-                        button.setBackground(getResources().getDrawable(R.drawable.btn_state));
+                        button.setBackground(getResources().getDrawable(R.drawable.btn_state_sd));
                         button.setTextColor(Color.parseColor("#000000"));
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT,

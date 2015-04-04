@@ -28,7 +28,7 @@
         android:layout_weight="1"
         android:layout_margin="4dp"
         android:textColor="#000"
-        android:background="@drawable/btn_state"
+        android:background="@drawable/btn_state_sd"
         android:id="@+id/sd_mat"/>
 
     <Button
@@ -39,7 +39,7 @@
         android:text="Ilmu Pengetahuan Alam"
         android:layout_weight="1"
         android:textColor="#000"
-        android:background="@drawable/btn_state"
+        android:background="@drawable/btn_state_sd"
         android:id="@+id/sd_ipa"/>
 
     <Button
@@ -50,7 +50,7 @@
         android:text="Ilmu Pengetahuan Sosial"
         android:textColor="#000"
         android:layout_weight="1"
-        android:background="@drawable/btn_state"
+        android:background="@drawable/btn_state_sd"
         android:id="@+id/sd_ips"/>
 
     <Button
@@ -61,7 +61,7 @@
         android:text="Bahasa Indonesia"
         android:textColor="#000"
         android:layout_weight="1"
-        android:background="@drawable/btn_state"
+        android:background="@drawable/btn_state_sd"
         android:id="@+id/sd_bind"/>
 
     <Button
@@ -72,7 +72,7 @@
         android:text="Bahasa Inggris"
         android:textColor="#000"
         android:layout_weight="1"
-        android:background="@drawable/btn_state"
+        android:background="@drawable/btn_state_sd"
         android:id="@+id/sd_bing"/>
 
 </LinearLayout>

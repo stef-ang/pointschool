@@ -159,11 +159,7 @@ public class NavigationDrawerFragment extends Fragment implements PeniAdapter.Cl
             default:
                 break;
         }
-        
-
-       // FragmentManager frg =
 
     }
-
 
 }

@@ -5,17 +5,14 @@ import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.penisriwahyu.pointerb.Model.Subbab;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -73,7 +70,7 @@ public class subBabView extends ActionBarActivity {
         Button button = new Button(this);
         button.setText(nama_subbab);
         button.setTextSize(18);
-        button.setBackground(getResources().getDrawable(R.drawable.btn_state));
+        button.setBackground(getResources().getDrawable(R.drawable.btn_state_sd));
         button.setTextColor(Color.parseColor("#000000"));
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,

@@ -5,8 +5,8 @@
         android:drawable="@drawable/btn_color_disabled"/>
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/btn_color_pressed"/>
+        android:drawable="@drawable/btn_color_pressed_sd"/>
     <item
-        android:drawable="@drawable/btn_color_default"/>
+        android:drawable="@drawable/btn_color_default_sd"/>
 
 </selector>

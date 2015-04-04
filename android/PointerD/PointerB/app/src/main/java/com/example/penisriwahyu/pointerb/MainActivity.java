@@ -22,7 +22,7 @@ import com.example.penisriwahyu.pointerb.Model.Subbab;
 import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
-    private int ever =0;
+    //private int ever =0;
     private Toolbar toolbar;
 
     @Override
@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new LongOperation(this).execute();
-        DatabaseHandler db = new DatabaseHandler(this.getApplicationContext());
+        //DatabaseHandler db = new DatabaseHandler(this.getApplicationContext());
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

@@ -35,7 +35,10 @@ import java.util.List;
 /**
  * Created by Karsten on 09/03/2015.
  */
-public class LongOperation extends AsyncTask<String, Void, Void> //1. parameter, 2. ???, 3. return type
+public class LongOperation extends AsyncTask<String, Void, Void>
+// parameter 1 untuk argument doInBackground
+// parameter 2 untuk argument onProgressUpdate
+// parameter 3 untuk argument onPostExecute
 {
     private Context context;
     private ProgressDialog pDialog;
@@ -55,6 +58,7 @@ public class LongOperation extends AsyncTask<String, Void, Void> //1. parameter,
         for(String table : param){
             List<NameValuePair> parameters = new ArrayList<NameValuePair>(2);
             parameters.add(new BasicNameValuePair("table", table));
+            // set entity (parameters)
             try {
                 httpPost.setEntity(new UrlEncodedFormEntity(parameters));
 

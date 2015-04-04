@@ -4,9 +4,15 @@
     <color name="secondToolbar">#00648B</color>
     <color name="primaryColorDark">#0048BB</color>
     <color name="accentColor">#50514F</color>
-    <color name="primaryText">#F00</color>
-    <color name="black">#000</color>
+    <color name="primaryText">#FF0000</color>
+    <color name="black">#000000</color>
+    <color name="red_SD">#E81919</color>
+    <color name="blue_SMP">#003399</color>
+    <color name="grey_SMA">#ACACAC</color>
     <color name="blackBrown">#303030</color>
     <color name="colorHighLight">#4D4C4C</color>
     <color name="colorAccent">#FF9800</color>
+    <color name="button_text_color">#000000</color>
+    <color name="button_background_default">#FFFFFF</color>
+    <color name="button_background_disabled">#999999</color>
 </resources>
