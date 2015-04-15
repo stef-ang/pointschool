@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#00648B</color>
+    <color name="primaryColor">#FF6600</color>
     <color name="secondToolbar">#00648B</color>
     <color name="primaryColorDark">#0048BB</color>
     <color name="accentColor">#50514F</color>

@@ -25,17 +25,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity
-            android:name=".MyLayout"
-            android:label="@string/title_activity_my_layout" >
-        </activity>
-        <activity
-            android:name=".MyView"
-            android:label="@string/title_activity_my_view" >
-        </activity>
+        <!--<activity-->
+            <!--android:name=".MyLayout"-->
+            <!--android:label="@string/title_activity_my_layout" >-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".MyView"-->
+            <!--android:label="@string/title_activity_my_view" >-->
+        <!--</activity>-->
         <activity
             android:name=".SubActivitySD"
-            android:label="@string/title_activity_sub_activity2" >
+            android:label="@string/title_activity_sub_activity_sd" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -46,7 +46,7 @@
         </activity>
         <activity
             android:name=".SubActivitySMA"
-            android:label="@string/title_activity_sub_activity_sm" >
+            android:label="@string/title_activity_sub_activity_sma" >
         </activity>
         <activity
             android:name=".sdSlide"

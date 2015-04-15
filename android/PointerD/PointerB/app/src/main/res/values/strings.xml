@@ -12,9 +12,9 @@
     <string name="drawer_close">Close</string>
     <string name="title_activity_my_layout">MyLayout</string>
     <string name="title_activity_my_view">MyView</string>
-    <string name="title_activity_sub_activity2">SD</string>
+    <string name="title_activity_sub_activity_sd">SD</string>
     <string name="title_activity_sub_activity_smp">SMP</string>
-    <string name="title_activity_sub_activity_sm">SMA</string>
+    <string name="title_activity_sub_activity_sma">SMA</string>
     <string name="title_activity_dynamic_matkul">DynamicMatkul</string>
     <string name="title_activity_sd_slide">sdSlide</string>
 

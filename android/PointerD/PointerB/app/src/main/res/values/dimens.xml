@@ -13,6 +13,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="button_text_size_home">40sp</dimen>
-    <dimen name="button_radius">30dp</dimen>
+    <dimen name="button_radius">25dp</dimen>
+    <dimen name="padding_top_heading">10dp</dimen>
+    <dimen name="padding_bottom_heading">10dp</dimen>
 
 </resources>

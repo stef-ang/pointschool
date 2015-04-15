@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/background"
     android:padding="30dp">
 
     <ImageView
@@ -13,7 +14,7 @@
         android:scaleType="fitStart"
         android:adjustViewBounds="true"
         android:id="@+id/imageView"
-        android:src="@drawable/logo_pointer"
+        android:src="@drawable/logo_home"
         android:paddingBottom="50dp" />
 
     <Button
