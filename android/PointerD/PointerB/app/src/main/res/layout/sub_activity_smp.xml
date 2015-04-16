@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background_smp"
-    tools:context="com.example.penisriwahyu.pointerb.SubActivitySD">
+    tools:context="com.example.penisriwahyu.pointerb.SubActivitySMP">
 
     <include
         android:id="@+id/app_bar"
@@ -15,6 +15,7 @@
     <TextView
         android:id="@+id/teksMapel"
         android:text="MATA PELAJARAN"
+        android:textStyle="bold"
         android:gravity="center"
         android:padding="@dimen/padding_top_heading"
         android:textColor="#000"

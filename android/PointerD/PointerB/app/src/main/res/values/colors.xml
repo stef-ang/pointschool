@@ -7,8 +7,11 @@
     <color name="primaryText">#FF0000</color>
     <color name="black">#000000</color>
     <color name="red_SD">#FF3333</color>
+    <color name="red_SD2">#FF5C5C</color>
     <color name="blue_SMP">#1947FF</color>
+    <color name="blue_SMP2">#476CFF</color>
     <color name="grey_SMA">#ACACAC</color>
+    <color name="grey_SMA2">#BDBDBD</color>
     <color name="blackBrown">#303030</color>
     <color name="colorHighLight">#4D4C4C</color>
     <color name="colorAccent">#FF9800</color>
@@ -40,4 +43,19 @@
     <color name="fbutton_color_concrete">#95a5a6</color>
     <color name="fbutton_color_asbestos">#7f8c8d</color>
     <color name="fbutton_color_transparent">@android:color/transparent</color>
+
+    <color name="aqua">#00ffff</color>
+    <color name="aquamarine">#7fffd4</color>
+    <color name="blue_violet">#8a2be2</color>
+    <color name="chartreuse">#7fff00</color>
+    <color name="chocolate">#d2691e</color>
+    <color name="crimson">#dc143c</color>
+    <color name="dark_orchid">#9932cc</color>
+    <color name="dark_salmon">#e9967a</color>
+    <color name="dark_slate_blue">#483d8b</color>
+    <color name="dark_slate_gray">#2f4f4f</color>
+    <color name="deep_pink">#ff1493</color>
+    <color name="fire_brick">#b22222</color>
+    <color name="forest_green">#228b22</color>
+    <color name="fuchsia">#ff00ff</color>
 </resources>

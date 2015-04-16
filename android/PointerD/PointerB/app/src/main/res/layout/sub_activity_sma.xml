@@ -1,112 +1,162 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.penisriwahyu.pointerb.SubActivitySD">
+    android:background="@drawable/background_sma"
+    tools:context="com.example.penisriwahyu.pointerb.SubActivitySMA">
 
     <include
         android:id="@+id/app_bar"
-        layout="@layout/app_bar_sd"/>
+        layout="@layout/app_bar_sma"/>
 
     <TextView
         android:id="@+id/teksMapel"
         android:text="MATA PELAJARAN"
+        android:textStyle="bold"
         android:gravity="center"
-        android:paddingTop="10dp"
+        android:padding="@dimen/padding_top_heading"
         android:textColor="#000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp" />
 
-    <Button
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Matematika"
-        android:layout_weight="1"
-        android:layout_margin="4dp"
-        android:textColor="#000"
-        android:background="@drawable/btn_state_sd"
-        android:id="@+id/sma_mat"/>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.example.penisriwahyu.pointerb.widget.FButton
+                    android:id="@+id/sma_mat_ipa"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Matematika IPA"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/margin_button_mapel"
+                    android:drawableTop="@drawable/math_icon"
+                    android:textColor="@color/button_background_default"
+                    fbutton:shadowEnabled="true"
+                    fbutton:buttonColor="@color/blue_violet"
+                    />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Biologi"
-        android:layout_weight="1"
-        android:textColor="#000"
-        android:background="@drawable/btn_state_sd"
-        android:id="@+id/sma_biologi"/>
+                <com.example.penisriwahyu.pointerb.widget.FButton
+                    android:id="@+id/sma_mat_ips"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Matematika IPS"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/margin_button_mapel"
+                    android:drawableTop="@drawable/math_ips_icon"
+                    android:textColor="@color/button_background_default"
+                    fbutton:shadowEnabled="true"
+                    fbutton:buttonColor="@color/chocolate"
+                    />
+            </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Fisika"
-        android:layout_weight="1"
-        android:textColor="#000"
-        android:background="@drawable/btn_state_sd"
-        android:id="@+id/sma_fisika"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.example.penisriwahyu.pointerb.widget.FButton
+                    android:id="@+id/sma_biologi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_button_mapel"
+                    android:text="Biologi"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/bio_icon"
+                    android:textColor="@color/button_background_default"
+                    fbutton:shadowEnabled="true"
+                    fbutton:buttonColor="@color/crimson"
+                    />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Kimia"
-        android:layout_weight="1"
-        android:textColor="#000"
-        android:background="@drawable/btn_state_sd"
-        android:id="@+id/sma_kimia"/>
+                <com.example.penisriwahyu.pointerb.widget.FButton
+                    android:id="@+id/sma_fisika"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_button_mapel"
+                    android:text="Fisika"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ipa_fisika_icon"
+                    android:textColor="@color/button_background_default"
+                    fbutton:shadowEnabled="true"
+                    fbutton:buttonColor="@color/dark_salmon"
+                    />
+            </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Ekonomi"
-        android:textColor="#000"
-        android:layout_weight="1"
-        android:background="@drawable/btn_state_sd"
-        android:id="@+id/sma_ekonomi"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.example.penisriwahyu.pointerb.widget.FButton
+                    android:id="@+id/sma_kimia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/margin_button_mapel"
+                    android:text="Kimia"
+                    android:drawableTop="@drawable/kimia_icon"
+                    android:textColor="@color/button_background_default"
+                    fbutton:shadowEnabled="true"
+                    fbutton:buttonColor="@color/dark_slate_gray"
+                    />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Sosiologi"
-        android:textColor="#000"
-        android:layout_weight="1"
-        android:background="@drawable/btn_state_sd"
-        android:id="@+id/sma_sosiologi"/>
+                <com.example.penisriwahyu.pointerb.widget.FButton
+                    android:id="@+id/sma_ekonomi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/margin_button_mapel"
+                    android:text="Ekonomi"
+                    android:drawableTop="@drawable/ekonomi_icon"
+                    android:textColor="@color/button_background_default"
+                    fbutton:shadowEnabled="true"
+                    fbutton:buttonColor="@color/fire_brick"
+                    />
 
+            </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Bahasa Indonesia"
-        android:textColor="#000"
-        android:layout_weight="1"
-        android:background="@drawable/btn_state_sd"
-        android:id="@+id/sma_bind"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.example.penisriwahyu.pointerb.widget.FButton
+                    android:id="@+id/sma_bind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/margin_button_mapel"
+                    android:text="Bahasa Indonesia"
+                    android:drawableTop="@drawable/b_indo_icon"
+                    android:textColor="@color/button_background_default"
+                    fbutton:shadowEnabled="true"
+                    fbutton:buttonColor="@color/forest_green"
+                    />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Bahasa Inggris"
-        android:textColor="#000"
-        android:layout_weight="1"
-        android:background="@drawable/btn_state_sd"
-        android:id="@+id/sma_bing"/>
+                <com.example.penisriwahyu.pointerb.widget.FButton
+                    android:id="@+id/sma_bing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/margin_button_mapel"
+                    android:text="Bahasa Inggris"
+                    android:drawableTop="@drawable/b_ing_icon"
+                    android:textColor="@color/button_background_default"
+                    fbutton:shadowEnabled="true"
+                    fbutton:buttonColor="@color/deep_pink"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
