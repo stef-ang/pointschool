@@ -39,7 +39,7 @@ public class sdSlide extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sd_slide);
 
-        toolbar = (Toolbar) findViewById(R.id.app_bar2);
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
 

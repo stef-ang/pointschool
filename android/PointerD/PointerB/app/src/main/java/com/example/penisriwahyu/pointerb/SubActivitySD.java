@@ -30,6 +30,11 @@ public class SubActivitySD extends ActionBarActivity {
         tvHeading.setTypeface(font);
 
         Button btnMat = (Button) findViewById(R.id.sd_mat);
+        Button btnIpa = (Button) findViewById(R.id.sd_ipa);
+        Button btnIps = (Button) findViewById(R.id.sd_ips);
+        Button btnBi = (Button) findViewById(R.id.sd_bind);
+        Button btnIng = (Button) findViewById(R.id.sd_bing);
+
         btnMat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,8 +45,6 @@ public class SubActivitySD extends ActionBarActivity {
                 startActivity(i);
             }
         });
-
-        Button btnIpa = (Button) findViewById(R.id.sd_ipa);
         btnIpa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,8 +55,6 @@ public class SubActivitySD extends ActionBarActivity {
                 startActivity(i);
             }
         });
-
-        Button btnIps = (Button) findViewById(R.id.sd_ips);
         btnIps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,8 +65,6 @@ public class SubActivitySD extends ActionBarActivity {
                 startActivity(i);
             }
         });
-
-        Button btnBi = (Button) findViewById(R.id.sd_bind);
         btnBi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,8 +75,6 @@ public class SubActivitySD extends ActionBarActivity {
                 startActivity(i);
             }
         });
-
-        Button btnIng = (Button) findViewById(R.id.sd_bing);
         btnIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,9 +85,6 @@ public class SubActivitySD extends ActionBarActivity {
                 startActivity(i);
             }
         });
-
-
-
     }
 
 
