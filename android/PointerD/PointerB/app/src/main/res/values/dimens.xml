@@ -16,5 +16,6 @@
     <dimen name="button_radius">25dp</dimen>
     <dimen name="padding_top_heading">10dp</dimen>
     <dimen name="padding_bottom_heading">10dp</dimen>
+    <dimen name="margin_button_mapel">6dp</dimen>
 
 </resources>

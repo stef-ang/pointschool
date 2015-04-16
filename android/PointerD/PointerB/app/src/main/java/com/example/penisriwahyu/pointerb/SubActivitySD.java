@@ -1,6 +1,7 @@
 package com.example.penisriwahyu.pointerb;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class SubActivitySD extends ActionBarActivity {
@@ -17,9 +19,15 @@ public class SubActivitySD extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sub_activity_sd);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "ITCKRIST.ttf");
+
         //halaman sd
         Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        TextView tvHeading = (TextView) findViewById(R.id.teksMapel);
+        tvHeading.setTypeface(font);
 
         Button btnMat = (Button) findViewById(R.id.sd_mat);
         btnMat.setOnClickListener(new View.OnClickListener() {
