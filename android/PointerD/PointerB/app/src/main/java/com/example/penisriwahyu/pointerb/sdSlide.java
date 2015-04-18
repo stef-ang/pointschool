@@ -27,15 +27,17 @@ import java.util.List;
 
 
 public class sdSlide extends ActionBarActivity {
-    private Toolbar toolbar;
-    private ViewPager mPager;
-    private SlidingTabLayout mTabs;
+
     private int number;
-    public int id_kelas = 1;
+//    public int id_kelas = 1;
     public int id_mapel = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Toolbar toolbar;
+        ViewPager mPager;
+        SlidingTabLayout mTabs;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sd_slide);
 
@@ -75,24 +77,24 @@ public class sdSlide extends ActionBarActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sd_slide, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_sd_slide, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     class MyPagerAdapter extends FragmentPagerAdapter{
 
@@ -103,7 +105,7 @@ public class sdSlide extends ActionBarActivity {
             super(fm);
 
             this.id_mapel = id_mapel;
-            tabs=getResources().getStringArray(R.array.tabs);
+            tabs = getResources().getStringArray(R.array.tabs);
         }
 
         @Override
@@ -124,14 +126,14 @@ public class sdSlide extends ActionBarActivity {
     }
 
     public static class MyFragment extends Fragment{
-        private TextView textView;
+//        private TextView textView;
         private LinearLayout rel;
-        private String[] panel1;
+//        private String[] panel1;
         private View layout;
-        private Button but1;
-        private static int id_kelas;
+//        private Button but1;
+//        private static int id_kelas;
         List<Bab> babs;
-        List<Mapel> mapels;
+//        List<Mapel> mapels;
 
         public static MyFragment getInstance(int position, int mapel){
             MyFragment myFragment= new MyFragment();
@@ -146,42 +148,42 @@ public class sdSlide extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
             Bundle bundle = getArguments();
 
-            layout =inflater.inflate(R.layout.fragment_my,(ViewGroup) this.getView(), true);
+            layout = inflater.inflate(R.layout.fragment_my,(ViewGroup) this.getView(), true);
             rel = (LinearLayout) layout.findViewById(R.id.linearLayout);
 
             rel.setPadding(10,10,10,10);
             if(bundle.getInt("id_mapel") == 0){
                 DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
                 babs = db.getBab(bundle.getInt("position") + 1 ,"Matematika");
-                for (int i = 0;i < babs.size();i++){
+                for (int i = 0; i < babs.size(); i++){
                     createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
                 }
             }
             else if(bundle.getInt("id_mapel") == 1){
                 DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
                 babs = db.getBab(bundle.getInt("position") + 1,"Ilmu Pengetahuan Alam");
-                for (int i = 0;i < babs.size();i++){
+                for (int i = 0; i < babs.size(); i++){
                     createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
                 }
             }
             else if(bundle.getInt("id_mapel") == 2){
                 DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
                 babs = db.getBab(bundle.getInt("position") + 1,"Ilmu Pengetahuan Sosial");
-                for (int i = 0;i < babs.size();i++){
+                for (int i = 0; i < babs.size(); i++){
                     createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
                 }
             }
             else if(bundle.getInt("id_mapel") == 3){
                 DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
                 babs = db.getBab(bundle.getInt("position") + 1,"Bahasa Indonesia");
-                for (int i = 0;i < babs.size();i++){
+                for (int i = 0; i < babs.size(); i++){
                     createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
                 }
             }
             else if(bundle.getInt("id_mapel") == 4){
                 DatabaseHandler db = new DatabaseHandler(getActivity().getApplicationContext());
                 babs = db.getBab(bundle.getInt("position") + 1,"Bahasa Inggris");
-                for (int i = 0;i < babs.size();i++){
+                for (int i = 0; i < babs.size(); i++){
                     createBtn(babs.get(i).getNamaBab(),babs.get(i).getIdBab());
                 }
             }
